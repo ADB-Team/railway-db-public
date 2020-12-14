@@ -396,7 +396,7 @@
 ### Query plans
 
 - [old query plan](https://github.com/ADB-Team/railway-db-public/blob/main/query-plans/original/transaction1.md)
-- [new query plan]()
+- [new query plan](https://github.com/ADB-Team/railway-db-public/blob/main/query-plans/original/part4trans1.md)
 
 ### Performance
 
@@ -407,6 +407,7 @@
 → all runtimes [here](https://github.com/ADB-Team/railway-db-public/blob/main/doc/runtimes.md)
 
 ### Explanation
+
 
 ## Transaction 3
 
@@ -431,7 +432,7 @@
 ### Query plans
 
 - [old query plan](https://github.com/ADB-Team/railway-db-public/blob/main/query-plans/original/transaction5.md)
-- [new query plan]()
+- [new query plan](https://github.com/ADB-Team/railway-db-public/blob/main/query-plans/original/part4trans5.md)
 
 ### Performance
 
@@ -449,7 +450,7 @@
 ### Query plans
 
 - [old query plan](https://github.com/ADB-Team/railway-db-public/blob/main/query-plans/original/transaction7.md)
-- [new query plan]()
+- [new query plan](https://github.com/ADB-Team/railway-db-public/blob/main/query-plans/original/part4trans7.md))
 
 ### Performance
 
