@@ -7,7 +7,7 @@
 ### Query plans
 
 - [old query plan](https://github.com/ADB-Team/railway-db-public/blob/main/query-plans/original/transaction1.md)
-- [new query plan]()
+- [new query plan](https://github.com/ADB-Team/railway-db-public/blob/main/query-plans/partitions/partition1/transaction1.md)
 
 ### Performance
 
@@ -19,12 +19,14 @@
 
 ### Explanation
 
+This partitions is not used in the query plan, so the partitions not give us a better performance.
+
 ## Transaction 3
 
 ### Query plans
 
 - [old query plan](https://github.com/ADB-Team/railway-db-public/blob/main/query-plans/original/transaction3.md)
-- [new query plan]()
+- [new query plan](https://github.com/ADB-Team/railway-db-public/blob/main/query-plans/partitions/partition1/transaction3.md)
 
 ### Performance
 
@@ -36,13 +38,14 @@
 
 ### Explanation
 
+A sequential searching is performed through the cities partitions. This not provides a better performance due to the big amount of partitions scanned.
 
 ## Transaction 5
 
 ### Query plans
 
 - [old query plan](https://github.com/ADB-Team/railway-db-public/blob/main/query-plans/original/transaction5.md)
-- [new query plan]()
+- [new query plan](https://github.com/ADB-Team/railway-db-public/blob/main/query-plans/partitions/partition1/transaction5.md)
 
 ### Performance
 
@@ -60,7 +63,7 @@
 ### Query plans
 
 - [old query plan](https://github.com/ADB-Team/railway-db-public/blob/main/query-plans/original/transaction7.md)
-- [new query plan]()
+- [new query plan](https://github.com/ADB-Team/railway-db-public/blob/main/query-plans/partitions/partition1/transaction7.md)
 
 ### Performance
 
@@ -72,13 +75,15 @@
 
 ### Explanation
 
+A sequential searching is performed through the cities partitions. This not provides a better performance due to the big amount of partitions scanned.
+
 
 ## Backup Transaction 2
 
 ### Query plans
 
 - [old query plan](https://github.com/ADB-Team/railway-db-public/blob/main/query-plans/original/backup-transaction2.md)
-- [new query plan]()
+- [new query plan](https://github.com/ADB-Team/railway-db-public/blob/main/query-plans/partitions/partition1/backup-transaction2.md)
 
 ### Performance
 
@@ -90,13 +95,15 @@
 
 ### Explanation
 
+We can see how the partitions is used in the deleting cities part, as only a partition is used due to the division by country. This give as a smaller better performance for not loop over all cities.
+
 
 ## Backup Transaction 4
 
 ### Query plans
 
 - [old query plan](https://github.com/ADB-Team/railway-db-public/blob/main/query-plans/original/backup-transaction4.md)
-- [new query plan]()
+- [new query plan](https://github.com/ADB-Team/railway-db-public/blob/main/query-plans/partitions/partition1/backup-transaction4.md)
 
 ### Performance
 
@@ -108,13 +115,15 @@
 
 ### Explanation
 
+The performance is so similar due to the transaction is not using the new partition.
+
 
 ## Backup Transaction 5
 
 ### Query plans
 
 - [old query plan](https://github.com/ADB-Team/railway-db-public/blob/main/query-plans/original/backup-transaction5.md)
-- [new query plan]()
+- [new query plan](https://github.com/ADB-Team/railway-db-public/blob/main/query-plans/partitions/partition1/backup-transaction5.md)
 
 ### Performance
 
@@ -125,6 +134,8 @@
 → all runtimes [here](https://github.com/ADB-Team/railway-db-public/blob/main/doc/runtimes.md)
 
 ### Explanation
+
+In this case we can see a huge better performance in the query due to a parallel scan of cities in the main query. This allows the query to obtain the result so much faster than before.
 
 
 
@@ -137,7 +148,7 @@
 ### Query plans
 
 - [old query plan](https://github.com/ADB-Team/railway-db-public/blob/main/query-plans/original/transaction1.md)
-- [new query plan]()
+- [new query plan](https://github.com/ADB-Team/railway-db-public/blob/main/query-plans/partitions/partition2/transaction1.md)
 
 ### Performance
 
@@ -149,12 +160,14 @@
 
 ### Explanation
 
+Seats partitions is used here but the performance is not better. This could be fue to the sequential scans of all partitions instead of scanning the table in a row.
+
 ## Transaction 3
 
 ### Query plans
 
 - [old query plan](https://github.com/ADB-Team/railway-db-public/blob/main/query-plans/original/transaction3.md)
-- [new query plan]()
+- [new query plan](https://github.com/ADB-Team/railway-db-public/blob/main/query-plans/partitions/partition2/transaction3.md)
 
 ### Performance
 
@@ -165,6 +178,8 @@
 → all runtimes [here](https://github.com/ADB-Team/railway-db-public/blob/main/doc/runtimes.md)
 
 ### Explanation
+
+The performance is similar due to the fact that the partition is not used in this transaction.
 
 
 ## Transaction 5
@@ -396,7 +411,7 @@
 ### Query plans
 
 - [old query plan](https://github.com/ADB-Team/railway-db-public/blob/main/query-plans/original/transaction1.md)
-- [new query plan]()
+- [new query plan](https://github.com/ADB-Team/railway-db-public/blob/main/query-plans/partitions/partition4/transaction1.md)
 
 ### Performance
 
@@ -431,7 +446,7 @@
 ### Query plans
 
 - [old query plan](https://github.com/ADB-Team/railway-db-public/blob/main/query-plans/original/transaction5.md)
-- [new query plan]()
+- [new query plan](https://github.com/ADB-Team/railway-db-public/blob/main/query-plans/partitions/partition4/transaction5.md)
 
 ### Performance
 
@@ -449,7 +464,7 @@
 ### Query plans
 
 - [old query plan](https://github.com/ADB-Team/railway-db-public/blob/main/query-plans/original/transaction7.md)
-- [new query plan]()
+- [new query plan](https://github.com/ADB-Team/railway-db-public/blob/main/query-plans/partitions/partition4/transaction7.md)
 
 ### Performance
 
