@@ -1,88 +1,1047 @@
-# Partition Specification
+# Partition 1
 
-## Partition 1
+→ see [here](https://github.com/ADB-Team/railway-db-public/blob/main/specs/partitions.md#partition-1)
 
-- **What:** Partition table cities by country.
-- **Type:** value list
-- **Used in:**
+## Transaction 1
 
-  - [in transaction 3 when we query data from the cities table for insertion](https://github.com/ADB-Team/railway-db-public/blob/main/query-plans/original/transaction3.md#create-stations)
+### Query plans
 
-  - [in transaction 7 when deleting connections by train producer's country](https://github.com/ADB-Team/railway-db-public/blob/main/query-plans/original/transaction7.md#delete-from-passengers_schedule-for-every-connection-with-this-train)
+- [old query plan](https://github.com/ADB-Team/railway-db-public/blob/main/query-plans/original/transaction1.md)
+- [new query plan](https://github.com/ADB-Team/railway-db-public/blob/main/query-plans/partitions/partition1/transaction1.md)
 
+### Performance
 
+- old avg: 0.5306 s
+- new avg: 0.5734 s
+- diff(avg): + 0.0428 s
 
-  - [in backup transaction 2 when we are deleting by country (because for most tables, they find out the country via cities](https://github.com/ADB-Team/railway-db-public/blob/main/query-plans/original/backup-transaction2.md#dependencies)
+→ all runtimes [here](https://github.com/ADB-Team/railway-db-public/blob/main/doc/runtimes.md)
 
-  - [in backup transaction 5 we join with cities and also filter by country which again needs city](https://github.com/ADB-Team/railway-db-public/blob/main/query-plans/original/backup-transaction5.md)
+### Explanation
 
-## Partition 2
+This partitions is not used in the query plan, so the partitions not give us a better performance.
 
-- **What:** Partition table seats by seat_id
-- **Type:** range
-- **Used in:**
+## Transaction 3
 
-  - [in backup transaction 4](https://github.com/ADB-Team/railway-db-public/blob/main/query-plans/original/backup-transaction4.md)
-  - [fetching seats in transaction 1](https://github.com/ADB-Team/railway-db-public/blob/main/query-plans/original/transaction1.md#getting-the-seats)
-  - [assigning seats to passengers in transaction 1](https://github.com/ADB-Team/railway-db-public/blob/main/query-plans/original/transaction1.md#cross-joining-passengers-with-connection-and-their-seat-for-every-passenger)
-  - [in the main query of transaction 1](https://github.com/ADB-Team/railway-db-public/blob/main/query-plans/original/transaction1.md#main-query)
-  - [calculating occupancy rates of the seats in transaction 5](https://github.com/ADB-Team/railway-db-public/blob/main/query-plans/original/transaction5.md#prerequisites)
+### Query plans
 
-## Partition 3
+- [old query plan](https://github.com/ADB-Team/railway-db-public/blob/main/query-plans/original/transaction3.md)
+- [new query plan](https://github.com/ADB-Team/railway-db-public/blob/main/query-plans/partitions/partition1/transaction3.md)
 
-- **What:** Partition passengers_schedule by hash of all 3 foreign keys
-- **Type:** hash
-- **Used in:**
+### Performance
 
-  - [checking for free seats in transaction 1](https://github.com/ADB-Team/railway-db-public/blob/main/query-plans/original/transaction1.md#for-every-seat)
-  - [insert into passengers_schedule in transaction 1](https://github.com/ADB-Team/railway-db-public/blob/main/query-plans/original/transaction1.md#main-query)
-  - [checking if seats are occupied in transaction 5](https://github.com/ADB-Team/railway-db-public/blob/main/query-plans/original/transaction5.md#for-every-connection)
-  - [deleting from passengers_schedule in transaction 7](https://github.com/ADB-Team/railway-db-public/blob/main/query-plans/original/transaction7.md#delete-from-passengers_schedule-for-every-connection-with-this-train)
+- old avg: 3.2264 s
+- new avg: 3.2661 s
+- diff(avg): + 0.0397 s
 
-## Partition 4
+→ all runtimes [here](https://github.com/ADB-Team/railway-db-public/blob/main/doc/runtimes.md)
 
-- **What:** Partition schedule by connection_id
-- **Type:** hash
-- **Used in:**
+### Explanation
 
-  - [matching connection with passengers in transaction 1](https://github.com/ADB-Team/railway-db-public/blob/main/query-plans/original/transaction1.md#cross-joining-passengers-with-connection-and-their-seat-for-every-passenger)
-  - [insert into schedule in transaction 3](https://github.com/ADB-Team/railway-db-public/blob/main/query-plans/original/transaction3.md#insert-connections)
-  - [in transaction 5](https://github.com/ADB-Team/railway-db-public/blob/main/query-plans/original/transaction5.md#main-query)
-  - [deleting connections in transaction 7](https://github.com/ADB-Team/railway-db-public/blob/main/query-plans/original/transaction7.md#delete-from-passengers_schedule-for-every-connection-with-this-train)
+A sequential searching is performed through the cities partitions. This not provides a better performance due to the big amount of partitions scanned.
 
-## Partition 5
+## Transaction 5
 
-- **What:** Partition routes by route_id
-- **Type:** hash
-- **Used in:**
+### Query plans
 
-  - [in transaction 1](https://github.com/ADB-Team/railway-db-public/blob/main/query-plans/original/transaction1.md#main-query)
-  - [join in transaction 3](https://github.com/ADB-Team/railway-db-public/blob/main/query-plans/original/transaction3.md#join-routes-and-train-for-every-starting-time)
-  - [creating routes in transaction 3](https://github.com/ADB-Team/railway-db-public/blob/main/query-plans/original/transaction3.md#create-routes)
-  - [inserting connections in transaction 3](https://github.com/ADB-Team/railway-db-public/blob/main/query-plans/original/transaction3.md#insert-connections)
-  - [in transaction 5](https://github.com/ADB-Team/railway-db-public/blob/main/query-plans/original/transaction5.md#main-query)
-  - [in the prerequisites for transaction 5](https://github.com/ADB-Team/railway-db-public/blob/main/query-plans/original/transaction5.md#for-every-connection)
-  - [in backup transaction 5](https://github.com/ADB-Team/railway-db-public/blob/main/query-plans/original/backup-transaction5.md)
-  
-# Optional
-  
-## Partition 6
+- [old query plan](https://github.com/ADB-Team/railway-db-public/blob/main/query-plans/original/transaction5.md)
+- [new query plan](https://github.com/ADB-Team/railway-db-public/blob/main/query-plans/partitions/partition1/transaction5.md)
 
-- **What:** Partition table trains by train_type.
-- **Type:** value list
-- **Used in:**
+### Performance
 
-  - [in transaction 1 where available seats are fetched by train](https://github.com/ADB-Team/railway-db-public/blob/main/query-plans/original/transaction1.md#prerequisites)
+- old avg: 4.3591 s
+- new avg: 5.9576 s
+- diff(avg): + 1.5985 s
 
-  - in transaction 3 in [join statement](https://github.com/ADB-Team/railway-db-public/blob/main/query-plans/original/transaction3.md#join-routes-and-train-for-every-starting-time) and [inserting new connections](https://github.com/ADB-Team/railway-db-public/blob/main/query-plans/original/transaction3.md#insert-connections)
+→ all runtimes [here](https://github.com/ADB-Team/railway-db-public/blob/main/doc/runtimes.md)
+
+### Explanation
 
 
-## Partition 7
+## Transaction 7
 
-- **What:** Partition wagons by wagon_id
-- **Type:** range
-- **Used in:**
+### Query plans
 
-  - [in backup transaction 4](https://github.com/ADB-Team/railway-db-public/blob/main/query-plans/original/backup-transaction4.md)
-  - [getting seats in transaction 1](https://github.com/ADB-Team/railway-db-public/blob/main/query-plans/original/transaction1.md#getting-the-seats)
-  - [calculating occupancy rate in transaction 5](https://github.com/ADB-Team/railway-db-public/blob/main/query-plans/original/transaction5.md#calculate-occupancy-rate)
+- [old query plan](https://github.com/ADB-Team/railway-db-public/blob/main/query-plans/original/transaction7.md)
+- [new query plan](https://github.com/ADB-Team/railway-db-public/blob/main/query-plans/partitions/partition1/transaction7.md)
+
+### Performance
+
+- old avg: 1.9664 s
+- new avg: 4.043 s
+- diff(avg): + 2.0383 s
+
+→ all runtimes [here](https://github.com/ADB-Team/railway-db-public/blob/main/doc/runtimes.md)
+
+### Explanation
+
+A sequential searching is performed through the cities partitions. This not provides a better performance due to the big amount of partitions scanned.
+
+
+## Backup Transaction 2
+
+### Query plans
+
+- [old query plan](https://github.com/ADB-Team/railway-db-public/blob/main/query-plans/original/backup-transaction2.md)
+- [new query plan](https://github.com/ADB-Team/railway-db-public/blob/main/query-plans/partitions/partition1/backup-transaction2.md)
+
+### Performance
+
+- old avg: 1.0949 s
+- new avg: 1.0856 s
+- diff(avg): -0.0093 s
+
+→ all runtimes [here](https://github.com/ADB-Team/railway-db-public/blob/main/doc/runtimes.md)
+
+### Explanation
+
+We can see how the partitions is used in the deleting cities part, as only a partition is used due to the division by country. This give as a smaller better performance for not loop over all cities.
+
+
+## Backup Transaction 4
+
+### Query plans
+
+- [old query plan](https://github.com/ADB-Team/railway-db-public/blob/main/query-plans/original/backup-transaction4.md)
+- [new query plan](https://github.com/ADB-Team/railway-db-public/blob/main/query-plans/partitions/partition1/backup-transaction4.md)
+
+### Performance
+
+- old avg: 1.5775 s
+- new avg: 1.5035 s
+- diff(avg): -0.074 s
+
+→ all runtimes [here](https://github.com/ADB-Team/railway-db-public/blob/main/doc/runtimes.md)
+
+### Explanation
+
+The performance is so similar due to the transaction is not using the new partition.
+
+
+## Backup Transaction 5
+
+### Query plans
+
+- [old query plan](https://github.com/ADB-Team/railway-db-public/blob/main/query-plans/original/backup-transaction5.md)
+- [new query plan](https://github.com/ADB-Team/railway-db-public/blob/main/query-plans/partitions/partition1/backup-transaction5.md)
+
+### Performance
+
+- old avg: 4.0755 s
+- new avg: 0.1363 s
+- diff(avg): -3.9392 s
+
+→ all runtimes [here](https://github.com/ADB-Team/railway-db-public/blob/main/doc/runtimes.md)
+
+### Explanation
+
+In this case we can see a huge better performance in the query due to a parallel scan of cities in the main query. This allows the query to obtain the result so much faster than before.
+
+
+
+# Partition 2
+
+→ see [here](https://github.com/ADB-Team/railway-db-public/blob/main/specs/partitions.md#partition-2)
+
+## Transaction 1
+
+### Query plans
+
+- [old query plan](https://github.com/ADB-Team/railway-db-public/blob/main/query-plans/original/transaction1.md)
+- [new query plan](https://github.com/ADB-Team/railway-db-public/blob/main/query-plans/partitions/partition2/transaction1.md)
+
+### Performance
+
+- old avg: 0.5306 s
+- new avg: 0.5962 s
+- diff(avg): + 0.0656 s
+
+→ all runtimes [here](https://github.com/ADB-Team/railway-db-public/blob/main/doc/runtimes.md)
+
+### Explanation
+
+Seats partitions is used here but the performance is not better. This could be fue to the sequential scans of all partitions instead of scanning the table in a row.
+
+## Transaction 3
+
+### Query plans
+
+- [old query plan](https://github.com/ADB-Team/railway-db-public/blob/main/query-plans/original/transaction3.md)
+- [new query plan](https://github.com/ADB-Team/railway-db-public/blob/main/query-plans/partitions/partition2/transaction3.md)
+
+### Performance
+
+- old avg: 3.2264 s
+- new avg: 3.146 s
+- diff(avg): -0.0804 s
+
+→ all runtimes [here](https://github.com/ADB-Team/railway-db-public/blob/main/doc/runtimes.md)
+
+### Explanation
+
+The performance is similar due to the fact that the partition is not used in this transaction.
+
+
+## Transaction 5
+
+### Query plans
+
+- [old query plan](https://github.com/ADB-Team/railway-db-public/blob/main/query-plans/original/transaction5.md)
+- [new query plan]()
+
+### Performance
+
+- old avg: 4.3591 s
+- new avg: 6.8495 s
+- diff(avg): + 2.4904 s
+
+→ all runtimes [here](https://github.com/ADB-Team/railway-db-public/blob/main/doc/runtimes.md)
+
+### Explanation
+
+
+## Transaction 7
+
+### Query plans
+
+- [old query plan](https://github.com/ADB-Team/railway-db-public/blob/main/query-plans/original/transaction7.md)
+- [new query plan]()
+
+### Performance
+
+- old avg: 1.9664 s
+- new avg: 4.3022 s
+- diff(avg): + 2.3358 s
+
+→ all runtimes [here](https://github.com/ADB-Team/railway-db-public/blob/main/doc/runtimes.md)
+
+### Explanation
+
+
+## Backup Transaction 2
+
+### Query plans
+
+- [old query plan](https://github.com/ADB-Team/railway-db-public/blob/main/query-plans/original/backup-transaction2.md)
+- [new query plan]()
+
+### Performance
+
+- old avg: 1.0949 s
+- new avg: 1.1087 s
+- diff(avg): + 0.0138 s
+
+→ all runtimes [here](https://github.com/ADB-Team/railway-db-public/blob/main/doc/runtimes.md)
+
+### Explanation
+
+
+## Backup Transaction 4
+
+### Query plans
+
+- [old query plan](https://github.com/ADB-Team/railway-db-public/blob/main/query-plans/original/backup-transaction4.md)
+- [new query plan]()
+
+### Performance
+
+- old avg: 1.5775 s
+- new avg: 1.6376 s
+- diff(avg): + 0.0601 s
+
+→ all runtimes [here](https://github.com/ADB-Team/railway-db-public/blob/main/doc/runtimes.md)
+
+### Explanation
+
+
+## Backup Transaction 5
+
+### Query plans
+
+- [old query plan](https://github.com/ADB-Team/railway-db-public/blob/main/query-plans/original/backup-transaction5.md)
+- [new query plan]()
+
+### Performance
+
+- old avg: 4.0755 s
+- new avg: 3.9209 s
+- diff(avg): -0.1546 s
+
+→ all runtimes [here](https://github.com/ADB-Team/railway-db-public/blob/main/doc/runtimes.md)
+
+### Explanation
+
+
+
+# Partition 3
+
+→ see [here](https://github.com/ADB-Team/railway-db-public/blob/main/specs/partitions.md#partition-3)
+
+## Transaction 1
+
+### Query plans
+
+- [old query plan](https://github.com/ADB-Team/railway-db-public/blob/main/query-plans/original/transaction1.md)
+- [new query plan]()
+
+### Performance
+
+- old avg: 0.5306 s
+- new avg: 0.6186 s
+- diff(avg): + 0.088 s
+
+→ all runtimes [here](https://github.com/ADB-Team/railway-db-public/blob/main/doc/runtimes.md)
+
+### Explanation
+
+## Transaction 3
+
+### Query plans
+
+- [old query plan](https://github.com/ADB-Team/railway-db-public/blob/main/query-plans/original/transaction3.md)
+- [new query plan]()
+
+### Performance
+
+- old avg: 3.2264 s
+- new avg: 3.2901 s
+- diff(avg): + 0.0637 s
+
+→ all runtimes [here](https://github.com/ADB-Team/railway-db-public/blob/main/doc/runtimes.md)
+
+### Explanation
+
+
+## Transaction 5
+
+### Query plans
+
+- [old query plan](https://github.com/ADB-Team/railway-db-public/blob/main/query-plans/original/transaction5.md)
+- [new query plan]()
+
+### Performance
+
+- old avg: 4.3591 s
+- new avg: 6.2145 s
+- diff(avg): + 1.8554 s
+
+→ all runtimes [here](https://github.com/ADB-Team/railway-db-public/blob/main/doc/runtimes.md)
+
+### Explanation
+
+
+## Transaction 7
+
+### Query plans
+
+- [old query plan](https://github.com/ADB-Team/railway-db-public/blob/main/query-plans/original/transaction7.md)
+- [new query plan]()
+
+### Performance
+
+- old avg: 1.9664 s
+- new avg: 8.3206 s
+- diff(avg): + 6.3542 s
+
+→ all runtimes [here](https://github.com/ADB-Team/railway-db-public/blob/main/doc/runtimes.md)
+
+### Explanation
+
+
+## Backup Transaction 2
+
+### Query plans
+
+- [old query plan](https://github.com/ADB-Team/railway-db-public/blob/main/query-plans/original/backup-transaction2.md)
+- [new query plan]()
+
+### Performance
+
+- old avg: 1.0949 s
+- new avg: 1.1698 s
+- diff(avg): + 0.0749 s
+
+→ all runtimes [here](https://github.com/ADB-Team/railway-db-public/blob/main/doc/runtimes.md)
+
+### Explanation
+
+
+## Backup Transaction 4
+
+### Query plans
+
+- [old query plan](https://github.com/ADB-Team/railway-db-public/blob/main/query-plans/original/backup-transaction4.md)
+- [new query plan]()
+
+### Performance
+
+- old avg: 1.5775 s
+- new avg: 1.4947 s
+- diff(avg): -0.0828 s
+
+→ all runtimes [here](https://github.com/ADB-Team/railway-db-public/blob/main/doc/runtimes.md)
+
+### Explanation
+
+
+## Backup Transaction 5
+
+### Query plans
+
+- [old query plan](https://github.com/ADB-Team/railway-db-public/blob/main/query-plans/original/backup-transaction5.md)
+- [new query plan]()
+
+### Performance
+
+- old avg: 4.0755 s
+- new avg: 3.9131 s
+- diff(avg): -0.1624 s
+
+→ all runtimes [here](https://github.com/ADB-Team/railway-db-public/blob/main/doc/runtimes.md)
+
+### Explanation
+
+
+# Partition 4
+
+→ see [here](https://github.com/ADB-Team/railway-db-public/blob/main/specs/partitions.md#partition-4)
+
+## Transaction 1
+
+### Query plans
+
+- [old query plan](https://github.com/ADB-Team/railway-db-public/blob/main/query-plans/original/transaction1.md)
+- [new query plan](https://github.com/ADB-Team/railway-db-public/blob/main/query-plans/partitions/partition4/transaction1.md)
+
+### Performance
+
+- old avg: 0.5306 s
+- new avg: 0.6067 s
+- diff(avg): + 0.0761 s
+
+→ all runtimes [here](https://github.com/ADB-Team/railway-db-public/blob/main/doc/runtimes.md)
+
+### Explanation
+
+## Transaction 3
+
+### Query plans
+
+- [old query plan](https://github.com/ADB-Team/railway-db-public/blob/main/query-plans/original/transaction3.md)
+- [new query plan]()
+
+### Performance
+
+- old avg: 3.2264 s
+- new avg: 0.4126 s
+- diff(avg): -2.8138 s
+
+→ all runtimes [here](https://github.com/ADB-Team/railway-db-public/blob/main/doc/runtimes.md)
+
+### Explanation
+
+
+## Transaction 5
+
+### Query plans
+
+- [old query plan](https://github.com/ADB-Team/railway-db-public/blob/main/query-plans/original/transaction5.md)
+- [new query plan](https://github.com/ADB-Team/railway-db-public/blob/main/query-plans/partitions/partition4/transaction5.md)
+
+### Performance
+
+- old avg: 4.3591 s
+- new avg: 6.8883 s
+- diff(avg): 2.5292 s
+
+→ all runtimes [here](https://github.com/ADB-Team/railway-db-public/blob/main/doc/runtimes.md)
+
+### Explanation
+
+
+## Transaction 7
+
+### Query plans
+
+- [old query plan](https://github.com/ADB-Team/railway-db-public/blob/main/query-plans/original/transaction7.md)
+- [new query plan](https://github.com/ADB-Team/railway-db-public/blob/main/query-plans/partitions/partition4/transaction7.md)
+
+### Performance
+
+- old avg: 1.9664 s
+- new avg: 0.1825 s
+- diff(avg): -1.7839 s
+
+→ all runtimes [here](https://github.com/ADB-Team/railway-db-public/blob/main/doc/runtimes.md)
+
+### Explanation
+
+
+## Backup Transaction 2
+
+### Query plans
+
+- [old query plan](https://github.com/ADB-Team/railway-db-public/blob/main/query-plans/original/backup-transaction2.md)
+- [new query plan]()
+
+### Performance
+
+- old avg: 1.0949 s
+- new avg: 1.0938 s
+- diff(avg): -0.0011 s
+
+→ all runtimes [here](https://github.com/ADB-Team/railway-db-public/blob/main/doc/runtimes.md)
+
+### Explanation
+
+
+## Backup Transaction 4
+
+### Query plans
+
+- [old query plan](https://github.com/ADB-Team/railway-db-public/blob/main/query-plans/original/backup-transaction4.md)
+- [new query plan]()
+
+### Performance
+
+- old avg: 1.5775 s
+- new avg: 1.4176 s
+- diff(avg): -0.1599 s
+
+→ all runtimes [here](https://github.com/ADB-Team/railway-db-public/blob/main/doc/runtimes.md)
+
+### Explanation
+
+
+## Backup Transaction 5
+
+### Query plans
+
+- [old query plan](https://github.com/ADB-Team/railway-db-public/blob/main/query-plans/original/backup-transaction5.md)
+- [new query plan]()
+
+### Performance
+
+- old avg: 4.0755 s
+- new avg: 3.9609 s
+- diff(avg): -0.1146 s
+
+→ all runtimes [here](https://github.com/ADB-Team/railway-db-public/blob/main/doc/runtimes.md)
+
+### Explanation
+
+
+# Partition 5
+
+→ see [here](https://github.com/ADB-Team/railway-db-public/blob/main/specs/partitions.md#partition-5)
+
+## Transaction 1
+
+### Query plans
+
+- [old query plan](https://github.com/ADB-Team/railway-db-public/blob/main/query-plans/original/transaction1.md)
+- [new query plan]()
+
+### Performance
+
+- old avg: 0.5306 s
+- new avg: 0.6337 s
+- diff(avg): + 0.1031 s
+
+→ all runtimes [here](https://github.com/ADB-Team/railway-db-public/blob/main/doc/runtimes.md)
+
+### Explanation
+
+## Transaction 3
+
+### Query plans
+
+- [old query plan](https://github.com/ADB-Team/railway-db-public/blob/main/query-plans/original/transaction3.md)
+- [new query plan]()
+
+### Performance
+
+- old avg: 3.2264 s
+- new avg: 0.5571 s
+- diff(avg): -2.6693 s
+
+→ all runtimes [here](https://github.com/ADB-Team/railway-db-public/blob/main/doc/runtimes.md)
+
+### Explanation
+
+
+## Transaction 5
+
+### Query plans
+
+- [old query plan](https://github.com/ADB-Team/railway-db-public/blob/main/query-plans/original/transaction5.md)
+- [new query plan]()
+
+### Performance
+
+- old avg: 4.3591 s
+- new avg: 6.7835 s
+- diff(avg): + 2.4244 s
+
+→ all runtimes [here](https://github.com/ADB-Team/railway-db-public/blob/main/doc/runtimes.md)
+
+### Explanation
+
+
+## Transaction 7
+
+### Query plans
+
+- [old query plan](https://github.com/ADB-Team/railway-db-public/blob/main/query-plans/original/transaction7.md)
+- [new query plan]()
+
+### Performance
+
+- old avg: 1.9664 s
+- new avg: 3.9806 s
+- diff(avg): + 2.0142 s
+
+→ all runtimes [here](https://github.com/ADB-Team/railway-db-public/blob/main/doc/runtimes.md)
+
+### Explanation
+
+
+## Backup Transaction 2
+
+### Query plans
+
+- [old query plan](https://github.com/ADB-Team/railway-db-public/blob/main/query-plans/original/backup-transaction2.md)
+- [new query plan]()
+
+### Performance
+
+- old avg: 1.0949 s
+- new avg: 1.2085 s
+- diff(avg): + 0.1136 s
+
+→ all runtimes [here](https://github.com/ADB-Team/railway-db-public/blob/main/doc/runtimes.md)
+
+### Explanation
+
+
+## Backup Transaction 4
+
+### Query plans
+
+- [old query plan](https://github.com/ADB-Team/railway-db-public/blob/main/query-plans/original/backup-transaction4.md)
+- [new query plan]()
+
+### Performance
+
+- old avg: 1.5775 s
+- new avg: 1.5866 s
+- diff(avg): + 0.0091 s
+
+→ all runtimes [here](https://github.com/ADB-Team/railway-db-public/blob/main/doc/runtimes.md)
+
+### Explanation
+
+
+## Backup Transaction 5
+
+### Query plans
+
+- [old query plan](https://github.com/ADB-Team/railway-db-public/blob/main/query-plans/original/backup-transaction5.md)
+- [new query plan]()
+
+### Performance
+
+- old avg: 4.0755 s
+- new avg: 3.7962 s
+- diff(avg): -0.2793 s
+
+→ all runtimes [here](https://github.com/ADB-Team/railway-db-public/blob/main/doc/runtimes.md)
+
+### Explanation
+
+
+# Partition 6
+
+→ see [here](https://github.com/ADB-Team/railway-db-public/blob/main/specs/partitions.md#partition-6)
+
+## Transaction 1
+
+### Query plans
+
+- [old query plan](https://github.com/ADB-Team/railway-db-public/blob/main/query-plans/original/transaction1.md)
+- [new query plan]()
+
+### Performance
+
+- old avg: 0.5306 s
+- new avg: 0.6115 s
+- diff(avg): + 0.0809 s
+
+→ all runtimes [here](https://github.com/ADB-Team/railway-db-public/blob/main/doc/runtimes.md)
+
+### Explanation
+
+## Transaction 3
+
+### Query plans
+
+- [old query plan](https://github.com/ADB-Team/railway-db-public/blob/main/query-plans/original/transaction3.md)
+- [new query plan]()
+
+### Performance
+
+- old avg: 3.2264 s
+- new avg: 4.1649 s
+- diff(avg): + 0.9385 s
+
+→ all runtimes [here](https://github.com/ADB-Team/railway-db-public/blob/main/doc/runtimes.md)
+
+### Explanation
+
+
+## Transaction 5
+
+### Query plans
+
+- [old query plan](https://github.com/ADB-Team/railway-db-public/blob/main/query-plans/original/transaction5.md)
+- [new query plan]()
+
+### Performance
+
+- old avg: 4.3591 s
+- new avg: 6.3846 s
+- diff(avg): + 2.0255 s
+
+→ all runtimes [here](https://github.com/ADB-Team/railway-db-public/blob/main/doc/runtimes.md)
+
+### Explanation
+
+
+## Transaction 7
+
+### Query plans
+
+- [old query plan](https://github.com/ADB-Team/railway-db-public/blob/main/query-plans/original/transaction7.md)
+- [new query plan]()
+
+### Performance
+
+- old avg: 1.9664 s
+- new avg: 4.7118 s
+- diff(avg): + 2.7454 s
+
+→ all runtimes [here](https://github.com/ADB-Team/railway-db-public/blob/main/doc/runtimes.md)
+
+### Explanation
+
+
+## Backup Transaction 2
+
+### Query plans
+
+- [old query plan](https://github.com/ADB-Team/railway-db-public/blob/main/query-plans/original/backup-transaction2.md)
+- [new query plan]()
+
+### Performance
+
+- old avg: 1.0949 s
+- new avg: 1.1266 s
+- diff(avg): + 0.0317 s
+
+→ all runtimes [here](https://github.com/ADB-Team/railway-db-public/blob/main/doc/runtimes.md)
+
+### Explanation
+
+
+## Backup Transaction 4
+
+### Query plans
+
+- [old query plan](https://github.com/ADB-Team/railway-db-public/blob/main/query-plans/original/backup-transaction4.md)
+- [new query plan]()
+
+### Performance
+
+- old avg: 1.5775 s
+- new avg: 1.8516 s
+- diff(avg): + 0.2741 s
+
+→ all runtimes [here](https://github.com/ADB-Team/railway-db-public/blob/main/doc/runtimes.md)
+
+### Explanation
+
+
+## Backup Transaction 5
+
+### Query plans
+
+- [old query plan](https://github.com/ADB-Team/railway-db-public/blob/main/query-plans/original/backup-transaction5.md)
+- [new query plan]()
+
+### Performance
+
+- old avg: 4.0755 s
+- new avg: 3.8013 s
+- diff(avg): -0.2742 s
+
+→ all runtimes [here](https://github.com/ADB-Team/railway-db-public/blob/main/doc/runtimes.md)
+
+### Explanation
+
+
+
+# Partition 7
+
+→ see [here](https://github.com/ADB-Team/railway-db-public/blob/main/specs/partitions.md#partition-7)
+
+## Transaction 1
+
+### Query plans
+
+- [old query plan](https://github.com/ADB-Team/railway-db-public/blob/main/query-plans/original/transaction1.md)
+- [new query plan]()
+
+### Performance
+
+- old avg: 0.5306 s
+- new avg: 0.5995 s
+- diff(avg): + 0.0689 s
+
+→ all runtimes [here](https://github.com/ADB-Team/railway-db-public/blob/main/doc/runtimes.md)
+
+### Explanation
+
+## Transaction 3
+
+### Query plans
+
+- [old query plan](https://github.com/ADB-Team/railway-db-public/blob/main/query-plans/original/transaction3.md)
+- [new query plan]()
+
+### Performance
+
+- old avg: 3.2264 s
+- new avg: 3.1418 s
+- diff(avg): -0.0846 s
+
+→ all runtimes [here](https://github.com/ADB-Team/railway-db-public/blob/main/doc/runtimes.md)
+
+### Explanation
+
+
+## Transaction 5
+
+### Query plans
+
+- [old query plan](https://github.com/ADB-Team/railway-db-public/blob/main/query-plans/original/transaction5.md)
+- [new query plan]()
+
+### Performance
+
+- old avg: 4.3591 s
+- new avg: 5.9846 s
+- diff(avg): + 1.6255 s
+
+→ all runtimes [here](https://github.com/ADB-Team/railway-db-public/blob/main/doc/runtimes.md)
+
+### Explanation
+
+
+## Transaction 7
+
+### Query plans
+
+- [old query plan](https://github.com/ADB-Team/railway-db-public/blob/main/query-plans/original/transaction7.md)
+- [new query plan]()
+
+### Performance
+
+- old avg: 1.9664 s
+- new avg: 3.9884 s
+- diff(avg): + 2.022 s
+
+→ all runtimes [here](https://github.com/ADB-Team/railway-db-public/blob/main/doc/runtimes.md)
+
+### Explanation
+
+
+## Backup Transaction 2
+
+### Query plans
+
+- [old query plan](https://github.com/ADB-Team/railway-db-public/blob/main/query-plans/original/backup-transaction2.md)
+- [new query plan]()
+
+### Performance
+
+- old avg: 1.0949 s
+- new avg: 1.0975 s
+- diff(avg): + 0.0026 s
+
+→ all runtimes [here](https://github.com/ADB-Team/railway-db-public/blob/main/doc/runtimes.md)
+
+### Explanation
+
+
+## Backup Transaction 4
+
+### Query plans
+
+- [old query plan](https://github.com/ADB-Team/railway-db-public/blob/main/query-plans/original/backup-transaction4.md)
+- [new query plan]()
+
+### Performance
+
+- old avg: 1.5775 s
+- new avg: 1.9942 s
+- diff(avg): + 0.4167 s
+
+→ all runtimes [here](https://github.com/ADB-Team/railway-db-public/blob/main/doc/runtimes.md)
+
+### Explanation
+
+
+## Backup Transaction 5
+
+### Query plans
+
+- [old query plan](https://github.com/ADB-Team/railway-db-public/blob/main/query-plans/original/backup-transaction5.md)
+- [new query plan]()
+
+### Performance
+
+- old avg: 4.0755 s
+- new avg: 3.783 s
+- diff(avg): -0.2925 s
+
+→ all runtimes [here](https://github.com/ADB-Team/railway-db-public/blob/main/doc/runtimes.md)
+
+### Explanation
+
+
+
+# All partitions together
+
+## Transaction 1
+
+### Query plans
+
+- [old query plan](https://github.com/ADB-Team/railway-db-public/blob/main/query-plans/original/transaction1.md)
+- [new query plan]()
+
+### Performance
+
+- old avg: 0.5306 s
+- new avg:
+- diff(avg):
+
+→ all runtimes [here](https://github.com/ADB-Team/railway-db-public/blob/main/doc/runtimes.md)
+
+### Explanation
+
+## Transaction 3
+
+### Query plans
+
+- [old query plan](https://github.com/ADB-Team/railway-db-public/blob/main/query-plans/original/transaction3.md)
+- [new query plan]()
+
+### Performance
+
+- old avg: 3.2264 s
+- new avg:
+- diff(avg):
+
+→ all runtimes [here](https://github.com/ADB-Team/railway-db-public/blob/main/doc/runtimes.md)
+
+### Explanation
+
+
+## Transaction 5
+
+### Query plans
+
+- [old query plan](https://github.com/ADB-Team/railway-db-public/blob/main/query-plans/original/transaction5.md)
+- [new query plan]()
+
+### Performance
+
+- old avg: 4.3591 s
+- new avg:
+- diff(avg):
+
+→ all runtimes [here](https://github.com/ADB-Team/railway-db-public/blob/main/doc/runtimes.md)
+
+### Explanation
+
+
+## Transaction 7
+
+### Query plans
+
+- [old query plan](https://github.com/ADB-Team/railway-db-public/blob/main/query-plans/original/transaction7.md)
+- [new query plan]()
+
+### Performance
+
+- old avg: 1.9664 s
+- new avg:
+- diff(avg):
+
+→ all runtimes [here](https://github.com/ADB-Team/railway-db-public/blob/main/doc/runtimes.md)
+
+### Explanation
+
+
+## Backup Transaction 2
+
+### Query plans
+
+- [old query plan](https://github.com/ADB-Team/railway-db-public/blob/main/query-plans/original/backup-transaction2.md)
+- [new query plan]()
+
+### Performance
+
+- old avg: 1.0949 s
+- new avg:
+- diff(avg):
+
+→ all runtimes [here](https://github.com/ADB-Team/railway-db-public/blob/main/doc/runtimes.md)
+
+### Explanation
+
+
+## Backup Transaction 4
+
+### Query plans
+
+- [old query plan](https://github.com/ADB-Team/railway-db-public/blob/main/query-plans/original/backup-transaction4.md)
+- [new query plan]()
+
+### Performance
+
+- old avg: 1.5775 s
+- new avg:
+- diff(avg):
+
+→ all runtimes [here](https://github.com/ADB-Team/railway-db-public/blob/main/doc/runtimes.md)
+
+### Explanation
+
+
+## Backup Transaction 5
+
+### Query plans
+
+- [old query plan](https://github.com/ADB-Team/railway-db-public/blob/main/query-plans/original/backup-transaction5.md)
+- [new query plan]()
+
+### Performance
+
+- old avg: 4.0755 s
+- new avg:
+- diff(avg):
+
+→ all runtimes [here](https://github.com/ADB-Team/railway-db-public/blob/main/doc/runtimes.md)
+
+### Explanation
