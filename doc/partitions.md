@@ -422,7 +422,7 @@ Not used
 → all runtimes [here](https://github.com/ADB-Team/railway-db-public/blob/main/doc/runtimes.md)
 
 ### Explanation
-
+Not used because of the number of rows
 ## Transaction 3
 
 ### Query plans
