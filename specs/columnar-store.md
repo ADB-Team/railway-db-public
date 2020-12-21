@@ -107,3 +107,10 @@ Join group with cities and countries
 **Expectations:**
 
 - speed up of transaction 7  and backup transaction 5 which could potentially make use of this new join group
+
+# Experiment
+
+Compare performance and usability of two different extensions for columnar store compression:
+
+- [cstore_fdw by citusdata](https://github.com/citusdata/cstore_fdw)
+- [zstore](https://github.com/greenplum-db/postgres/tree/zedstore)
