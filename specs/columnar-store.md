@@ -49,7 +49,7 @@ Columnar store for column `name` of `stations`.
 - backup transaction 5 will probably have the same execution time as before because we also access other columns of `stations`
 
 # Join Group 1
-Join group with seats, wagons and trains.
+Join group with `seats`, `wagons` and `trains`.
 
 **Used in:**
 
@@ -97,7 +97,7 @@ Which again is **used in transactions:**
 - speed up of transaction 1, 5 and backup transaction 4 because they could use this join group
 
 # Join Group 2
-Join group with cities and countries
+Join group with `cities` and `countries`
 
 **Used in:**
 
