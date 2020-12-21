@@ -1,3 +1,13 @@
+# Table of Contents
+
+- [Postgres-specific: Implementation](https://github.com/ADB-Team/railway-db-public/blob/main/specs/columnar-store.md#postgres-specific-implementation)
+- [Columnar Store 1](https://github.com/ADB-Team/railway-db-public/blob/main/specs/columnar-store.md#columnar-store-1)
+- [Columnar Store 2](https://github.com/ADB-Team/railway-db-public/blob/main/specs/columnar-store.md#columnar-store-2)
+- [Columnar Store 3](https://github.com/ADB-Team/railway-db-public/blob/main/specs/columnar-store.md#columnar-store-3)
+- [Join Group 1](https://github.com/ADB-Team/railway-db-public/blob/main/specs/columnar-store.md#join-group-1)
+- [Join Group 2](https://github.com/ADB-Team/railway-db-public/blob/main/specs/columnar-store.md#join-group-2)
+- [Experiment](https://github.com/ADB-Team/railway-db-public/blob/main/specs/columnar-store.md#experiment)
+
 # Postgres-specific: Implementation
 
 Postgres doesn't have a native columnar storage solution → we will use VIEWs and [cstore_fdw by citusdata](https://github.com/citusdata/cstore_fdw)/[zedstore](https://github.com/greenplum-db/postgres/tree/zedstore)
