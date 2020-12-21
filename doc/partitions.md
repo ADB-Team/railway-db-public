@@ -160,7 +160,7 @@ In this case we can see a huge better performance in the query due to a parallel
 
 ### Explanation
 
-Seats partitions is used here but the performance is not better. This could be fue to the sequential scans of all partitions instead of scanning the table in a row.
+Seats partitions is used here but the performance is not better. This could be due to the sequential scans of all partitions instead of scanning the table in a row.
 
 ## Transaction 3
 
@@ -187,7 +187,7 @@ The performance is similar due to the fact that the partition is not used in thi
 ### Query plans
 
 - [old query plan](https://github.com/ADB-Team/railway-db-public/blob/main/query-plans/original/transaction5.md)
-- [new query plan]()
+- [new query plan](https://github.com/ADB-Team/railway-db-public/blob/main/query-plans/partitions/partition2/transaction5.md)
 
 ### Performance
 
@@ -199,13 +199,17 @@ The performance is similar due to the fact that the partition is not used in thi
 
 ### Explanation
 
+Seats partitions is used here but the performance is not better. This could be due to the sequential scans of all partitions instead of scanning the table in a row.
+
+
+
 
 ## Transaction 7
 
 ### Query plans
 
 - [old query plan](https://github.com/ADB-Team/railway-db-public/blob/main/query-plans/original/transaction7.md)
-- [new query plan]()
+- [new query plan](https://github.com/ADB-Team/railway-db-public/blob/main/query-plans/partitions/partition2/transaction7.md)
 
 ### Performance
 
@@ -217,13 +221,15 @@ The performance is similar due to the fact that the partition is not used in thi
 
 ### Explanation
 
+The partition is not used but the time is so much worst than before. This could be happening because of some subquery implementation with the partition.
+
 
 ## Backup Transaction 2
 
 ### Query plans
 
 - [old query plan](https://github.com/ADB-Team/railway-db-public/blob/main/query-plans/original/backup-transaction2.md)
-- [new query plan]()
+- [new query plan](https://github.com/ADB-Team/railway-db-public/blob/main/query-plans/partitions/partition2/backup-transaction2.md)
 
 ### Performance
 
@@ -235,13 +241,15 @@ The performance is similar due to the fact that the partition is not used in thi
 
 ### Explanation
 
+The time is so similar because of not be using the new partition in any part of the transaction.
+
 
 ## Backup Transaction 4
 
 ### Query plans
 
 - [old query plan](https://github.com/ADB-Team/railway-db-public/blob/main/query-plans/original/backup-transaction4.md)
-- [new query plan]()
+- [new query plan](https://github.com/ADB-Team/railway-db-public/blob/main/query-plans/partitions/partition2/backup-transaction4.md)
 
 ### Performance
 
@@ -253,13 +261,15 @@ The performance is similar due to the fact that the partition is not used in thi
 
 ### Explanation
 
+Seats partitions is used here but the performance is not better. This should be better due to the parallel scans of all partitions instead of scanning the table in a row, but the time is worst.
+
 
 ## Backup Transaction 5
 
 ### Query plans
 
 - [old query plan](https://github.com/ADB-Team/railway-db-public/blob/main/query-plans/original/backup-transaction5.md)
-- [new query plan]()
+- [new query plan](https://github.com/ADB-Team/railway-db-public/blob/main/query-plans/partitions/partition2/backup-transaction5.md)
 
 ### Performance
 
@@ -270,6 +280,8 @@ The performance is similar due to the fact that the partition is not used in thi
 → all runtimes [here](https://github.com/ADB-Team/railway-db-public/blob/main/doc/runtimes.md)
 
 ### Explanation
+
+The time is better but the partition is not used anywhere in the query plan. This could be happening because of the use of the partition in some subquery.
 
 
 
@@ -423,12 +435,12 @@ Not used
 
 ### Explanation
 Not used because of the number of rows
-## Transaction 3
+<!-- ## Transaction 3
 
 ### Query plans
 
 - [old query plan](https://github.com/ADB-Team/railway-db-public/blob/main/query-plans/original/transaction3.md)
-- [new query plan]()
+- [new query plan](https://github.com/ADB-Team/railway-db-public/blob/main/query-plans/partitions/partition2/backup-transaction5.md)
 
 ### Performance
 
@@ -438,7 +450,7 @@ Not used because of the number of rows
 
 → all runtimes [here](https://github.com/ADB-Team/railway-db-public/blob/main/doc/runtimes.md)
 
-### Explanation
+### Explanation -->
 
 
 ## Transaction 5
@@ -482,7 +494,7 @@ Not used because of the number of rows
 ### Query plans
 
 - [old query plan](https://github.com/ADB-Team/railway-db-public/blob/main/query-plans/original/backup-transaction2.md)
-- [new query plan]()
+- [new query plan](https://github.com/ADB-Team/railway-db-public/blob/main/query-plans/partitions/partition4/backup-transaction2.md)
 
 ### Performance
 
@@ -500,7 +512,7 @@ Not used because of the number of rows
 ### Query plans
 
 - [old query plan](https://github.com/ADB-Team/railway-db-public/blob/main/query-plans/original/backup-transaction4.md)
-- [new query plan]()
+- [new query plan](https://github.com/ADB-Team/railway-db-public/blob/main/query-plans/partitions/partition4/backup-transaction4.md)
 
 ### Performance
 
@@ -518,7 +530,7 @@ Not used because of the number of rows
 ### Query plans
 
 - [old query plan](https://github.com/ADB-Team/railway-db-public/blob/main/query-plans/original/backup-transaction5.md)
-- [new query plan]()
+- [new query plan](https://github.com/ADB-Team/railway-db-public/blob/main/query-plans/partitions/partition4/backup-transaction5.md)
 
 ### Performance
 
@@ -540,7 +552,7 @@ Not used because of the number of rows
 ### Query plans
 
 - [old query plan](https://github.com/ADB-Team/railway-db-public/blob/main/query-plans/original/transaction1.md)
-- [new query plan]()
+- [new query plan](https://github.com/ADB-Team/railway-db-public/blob/main/query-plans/partitions/partition5/transaction1.md)
 
 ### Performance
 
@@ -552,12 +564,12 @@ Not used because of the number of rows
 
 ### Explanation
 
-## Transaction 3
+<!-- ## Transaction 3
 
 ### Query plans
 
 - [old query plan](https://github.com/ADB-Team/railway-db-public/blob/main/query-plans/original/transaction3.md)
-- [new query plan]()
+- [new query plan](https://github.com/ADB-Team/railway-db-public/blob/main/query-plans/partitions/partition5/transaction3.md)
 
 ### Performance
 
@@ -567,7 +579,7 @@ Not used because of the number of rows
 
 → all runtimes [here](https://github.com/ADB-Team/railway-db-public/blob/main/doc/runtimes.md)
 
-### Explanation
+### Explanation -->
 
 
 ## Transaction 5
@@ -575,7 +587,7 @@ Not used because of the number of rows
 ### Query plans
 
 - [old query plan](https://github.com/ADB-Team/railway-db-public/blob/main/query-plans/original/transaction5.md)
-- [new query plan]()
+- [new query plan](https://github.com/ADB-Team/railway-db-public/blob/main/query-plans/partitions/partition5/transaction5.md)
 
 ### Performance
 
@@ -593,7 +605,7 @@ Not used because of the number of rows
 ### Query plans
 
 - [old query plan](https://github.com/ADB-Team/railway-db-public/blob/main/query-plans/original/transaction7.md)
-- [new query plan]()
+- [new query plan](https://github.com/ADB-Team/railway-db-public/blob/main/query-plans/partitions/partition5/transaction7.md)
 
 ### Performance
 
@@ -611,7 +623,7 @@ Not used because of the number of rows
 ### Query plans
 
 - [old query plan](https://github.com/ADB-Team/railway-db-public/blob/main/query-plans/original/backup-transaction2.md)
-- [new query plan]()
+- [new query plan](https://github.com/ADB-Team/railway-db-public/blob/main/query-plans/partitions/partition5/backup-transaction2.md)
 
 ### Performance
 
@@ -629,7 +641,7 @@ Not used because of the number of rows
 ### Query plans
 
 - [old query plan](https://github.com/ADB-Team/railway-db-public/blob/main/query-plans/original/backup-transaction4.md)
-- [new query plan]()
+- [new query plan](https://github.com/ADB-Team/railway-db-public/blob/main/query-plans/partitions/partition5/backup-transaction4.md)
 
 ### Performance
 
@@ -647,7 +659,7 @@ Not used because of the number of rows
 ### Query plans
 
 - [old query plan](https://github.com/ADB-Team/railway-db-public/blob/main/query-plans/original/backup-transaction5.md)
-- [new query plan]()
+- [new query plan](https://github.com/ADB-Team/railway-db-public/blob/main/query-plans/partitions/partition5/backup-transaction5.md)
 
 ### Performance
 
@@ -660,7 +672,7 @@ Not used because of the number of rows
 ### Explanation
 
 
-# Partition 6
+<!-- # Partition 6
 
 → see [here](https://github.com/ADB-Team/railway-db-public/blob/main/specs/partitions.md#partition-6)
 
@@ -1044,4 +1056,4 @@ Not used because of the number of rows
 
 → all runtimes [here](https://github.com/ADB-Team/railway-db-public/blob/main/doc/runtimes.md)
 
-### Explanation
+### Explanation -->
