@@ -114,3 +114,5 @@ Compare performance and usability of two different extensions for columnar store
 
 - [cstore_fdw by citusdata](https://github.com/citusdata/cstore_fdw)
 - [zstore](https://github.com/greenplum-db/postgres/tree/zedstore)
+
+Equivalent to comparing compression algorithms as those extensions implement columnar storage in a different way.
