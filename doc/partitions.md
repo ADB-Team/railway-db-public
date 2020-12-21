@@ -470,6 +470,8 @@ Not used because of the number of rows
 
 ### Explanation
 
+The time is worst due to the sequential scanning of the schedule partitions.
+
 
 ## Transaction 7
 
@@ -487,6 +489,8 @@ Not used because of the number of rows
 → all runtimes [here](https://github.com/ADB-Team/railway-db-public/blob/main/doc/runtimes.md)
 
 ### Explanation
+
+The partitions is used and the time is better due to the parallel operations in deleting in each partition.
 
 
 ## Backup Transaction 2
@@ -506,6 +510,8 @@ Not used because of the number of rows
 
 ### Explanation
 
+The time is so similar because the partition is not used.
+
 
 ## Backup Transaction 4
 
@@ -524,6 +530,8 @@ Not used because of the number of rows
 
 ### Explanation
 
+The time is so similar because the partition is not used.
+
 
 ## Backup Transaction 5
 
@@ -541,6 +549,8 @@ Not used because of the number of rows
 → all runtimes [here](https://github.com/ADB-Team/railway-db-public/blob/main/doc/runtimes.md)
 
 ### Explanation
+
+The time is so similar because the partition is not used.
 
 
 # Partition 5
@@ -563,6 +573,8 @@ Not used because of the number of rows
 → all runtimes [here](https://github.com/ADB-Team/railway-db-public/blob/main/doc/runtimes.md)
 
 ### Explanation
+
+The partition is used but the time is not better because of the sequential scanning of the new partitions.
 
 <!-- ## Transaction 3
 
