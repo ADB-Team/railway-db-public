@@ -1,6 +1,6 @@
 # Postgres-specific: Implementation
 
-Postgres doesn't have a native columnar storage solution → we will use VIEWs and [cstore_fdw by citusdata](https://github.com/citusdata/cstore_fdw)
+Postgres doesn't have a native columnar storage solution → we will use VIEWs and [cstore_fdw by citusdata](https://github.com/citusdata/cstore_fdw)/[zedstore](https://github.com/greenplum-db/postgres/tree/zedstore)
 
 # Columnar Store 1
 Make table `routes` a columnar store.
