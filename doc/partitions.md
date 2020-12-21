@@ -282,7 +282,7 @@ The performance is similar due to the fact that the partition is not used in thi
 ### Query plans
 
 - [old query plan](https://github.com/ADB-Team/railway-db-public/blob/main/query-plans/original/transaction1.md)
-- [new query plan]()
+- [new query plan](https://github.com/ADB-Team/railway-db-public/blob/main/query-plans/partitions/partitions3.md#transaction-1)
 
 ### Performance
 
@@ -293,7 +293,7 @@ The performance is similar due to the fact that the partition is not used in thi
 → all runtimes [here](https://github.com/ADB-Team/railway-db-public/blob/main/doc/runtimes.md)
 
 ### Explanation
-
+It's not use a lot so we don't see different
 ## Transaction 3
 
 ### Query plans
@@ -310,14 +310,14 @@ The performance is similar due to the fact that the partition is not used in thi
 → all runtimes [here](https://github.com/ADB-Team/railway-db-public/blob/main/doc/runtimes.md)
 
 ### Explanation
-
+Not used
 
 ## Transaction 5
 
 ### Query plans
 
 - [old query plan](https://github.com/ADB-Team/railway-db-public/blob/main/query-plans/original/transaction5.md)
-- [new query plan]()
+- [new query plan](https://github.com/ADB-Team/railway-db-public/blob/main/query-plans/partitions/partitions3.md#transaction-5)
 
 ### Performance
 
@@ -328,14 +328,14 @@ The performance is similar due to the fact that the partition is not used in thi
 → all runtimes [here](https://github.com/ADB-Team/railway-db-public/blob/main/doc/runtimes.md)
 
 ### Explanation
-
+The cost is more important for each connection SQL found, so the time is longer
 
 ## Transaction 7
 
 ### Query plans
 
 - [old query plan](https://github.com/ADB-Team/railway-db-public/blob/main/query-plans/original/transaction7.md)
-- [new query plan]()
+- [new query plan](https://github.com/ADB-Team/railway-db-public/blob/main/query-plans/partitions/partitions3.md#transaction-7)
 
 ### Performance
 
@@ -346,7 +346,7 @@ The performance is similar due to the fact that the partition is not used in thi
 → all runtimes [here](https://github.com/ADB-Team/railway-db-public/blob/main/doc/runtimes.md)
 
 ### Explanation
-
+Delete much time for each partition and for every he found.
 
 ## Backup Transaction 2
 
@@ -364,7 +364,7 @@ The performance is similar due to the fact that the partition is not used in thi
 → all runtimes [here](https://github.com/ADB-Team/railway-db-public/blob/main/doc/runtimes.md)
 
 ### Explanation
-
+Not used 
 
 ## Backup Transaction 4
 
@@ -382,7 +382,7 @@ The performance is similar due to the fact that the partition is not used in thi
 → all runtimes [here](https://github.com/ADB-Team/railway-db-public/blob/main/doc/runtimes.md)
 
 ### Explanation
-
+Not used 
 
 ## Backup Transaction 5
 
@@ -400,7 +400,7 @@ The performance is similar due to the fact that the partition is not used in thi
 → all runtimes [here](https://github.com/ADB-Team/railway-db-public/blob/main/doc/runtimes.md)
 
 ### Explanation
-
+Not used 
 
 # Partition 4
 
