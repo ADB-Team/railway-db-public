@@ -8,6 +8,8 @@ The setup process of zedstore is not an easy one as it isn't an extension but a 
 
 - no support for join groups, also not as an workaround with views [as suggested in our specification file](https://github.com/ADB-Team/railway-db-public/blob/main/specs/columnar-store.md#postgres-specific-implementation)
 - creating a columnar store with a huge amount of rows (900 472 in case of columnar store 2) seems not to be possible, maybe too much overhead on creation?
+- when copying data with auto-increment ID from a row store into a columnar store, the auto-incremation starts at 0 again for new entries, despite there being more than 0 entries already in the columnar store
+- after some transactions, costly catalog updates are made, see [here](https://github.com/ADB-Team/railway-db-public/blob/main/doc/catalog-update.txt) for an extract
 
 ## Columnar Store 1
 
@@ -30,6 +32,8 @@ The setup process of zedstore is not an easy one as it isn't an extension but a 
 
 #### Explanation
 
+As expected, the query runs slightly faster. The difference is almost unnoticable though because `routes` is only accessed in a single small part of the query, the selecting of the connection.
+
 ### Transaction 3
 
 #### Query plans
@@ -47,6 +51,9 @@ The setup process of zedstore is not an easy one as it isn't an extension but a 
 
 #### Explanation
 
+When bulk-inserting the old data from the `routes` row store table, their ID's are copied as well. For some reason, when inserting new rows into the newly created `routes` columnar store, not the next ID in row is taken but it's counting from 0 up again. Therefore, this transaction fails. We can mitigate this issue by inserting the data without ID's and letting the ID's be automatically incremented, however this leads to inconsistencies with our data, as the ID's are then newly distributed, thus making other transactions fail instead.
+
+When temporarily changing the creation process of columnar store 3 to create fresh ID's for the data from `routes` row store, we can also test this method and get **2.488 s** as a runtime which is also quicker than before, just as expected.
 
 ### Transaction 5
 
@@ -65,6 +72,7 @@ The setup process of zedstore is not an easy one as it isn't an extension but a 
 
 #### Explanation
 
+We expected a performance improvement, however the query runs much slower. There is no apparent reason to see for that in the query plan. It might be the catalog update that follows the transaction, which for readability reasons was not included into the formatted query plan. [Here](https://github.com/ADB-Team/railway-db-public/blob/main/doc/catalog-update.txt) you can find an excerpt.
 
 ### Transaction 7
 
@@ -83,6 +91,7 @@ The setup process of zedstore is not an easy one as it isn't an extension but a 
 
 #### Explanation
 
+`routes` isn't even accessed in this query, so the perfomance loss cannot be traced to the usage of the columnar store. Instead, it could be because of a catalog update which follows the execution of this transaction.
 
 ### Backup Transaction 2
 
@@ -101,6 +110,7 @@ The setup process of zedstore is not an easy one as it isn't an extension but a 
 
 #### Explanation
 
+There is almost no perfomance difference which can be explained by the fact, that `routes` is not accessed in this transaction so the implementation of `routes` as a columnar store has no impact.
 
 ### Backup Transaction 4
 
@@ -119,6 +129,7 @@ The setup process of zedstore is not an easy one as it isn't an extension but a 
 
 #### Explanation
 
+There is almost no perfomance difference which can be explained by the fact, that `routes` is not accessed in this transaction so the implementation of `routes` as a columnar store has no impact.
 
 ### Backup Transaction 5
 
@@ -137,7 +148,7 @@ The setup process of zedstore is not an easy one as it isn't an extension but a 
 
 #### Explanation
 
-
+We expected a speed-up but instead got a slow-down. This might be due to the join of `routes` with `stations` or due to [catalog updates](https://github.com/ADB-Team/railway-db-public/blob/main/doc/catalog-update.txt).
 
 ## Columnar Store 2
 
@@ -167,6 +178,8 @@ This columnar store couldn't be created with zedstore. During the multiple creat
 
 #### Explanation
 
+The new `station_names_cs` is used which improves the query ever so slightly. It isn't the heaviest part of the transaction though, which is why the impact is quite low.
+
 ### Transaction 3
 
 #### Query plans
@@ -184,6 +197,7 @@ This columnar store couldn't be created with zedstore. During the multiple creat
 
 #### Explanation
 
+The perfomance is slightly worse, probably due to the overhead of inserting into the columnar store in this transaction.
 
 ### Transaction 5
 
@@ -202,6 +216,7 @@ This columnar store couldn't be created with zedstore. During the multiple creat
 
 #### Explanation
 
+The new `station_names_cs` is only used once for a sequential scan which shouldn't slow down the transaction this much. The actual reason might be a [catalog update](https://github.com/ADB-Team/railway-db-public/blob/main/doc/catalog-update.txt) which follows the execution of this transaction.
 
 ### Transaction 7
 
@@ -220,6 +235,7 @@ This columnar store couldn't be created with zedstore. During the multiple creat
 
 #### Explanation
 
+The newly created columnar store is not used in this transaction. The significant performance loss might be because of [catalog operations](https://github.com/ADB-Team/railway-db-public/blob/main/doc/catalog-update.txt).
 
 ### Backup Transaction 2
 
@@ -238,6 +254,7 @@ This columnar store couldn't be created with zedstore. During the multiple creat
 
 #### Explanation
 
+`station_names_cs` is not used in this transaction as there is no part that requires station names.
 
 ### Backup Transaction 4
 
@@ -256,6 +273,7 @@ This columnar store couldn't be created with zedstore. During the multiple creat
 
 #### Explanation
 
+The newly created columnar store is not used in this transaction as there is no use of station names, any perfomance differences are probably due to fluctuations.
 
 ### Backup Transaction 5
 
@@ -274,6 +292,7 @@ This columnar store couldn't be created with zedstore. During the multiple creat
 
 #### Explanation
 
+As this transaction needs to access other columns of `stations` as well, it cannot make use of the new columnar store.
 
 ## Join Group 1
 
@@ -296,6 +315,8 @@ This columnar store couldn't be created with zedstore. During the multiple creat
 
 #### Explanation
 
+The new columnar store is used but only for a single sequential scan so it doesn't have much of an impact on the performance.
+
 ### Transaction 3
 
 #### Query plans
@@ -313,6 +334,7 @@ This columnar store couldn't be created with zedstore. During the multiple creat
 
 #### Explanation
 
+This transaction doesn't include a join of `seats`, `wagons` and `trains`, thus making no use of the newly created join group.
 
 ### Transaction 5
 
@@ -331,6 +353,7 @@ This columnar store couldn't be created with zedstore. During the multiple creat
 
 #### Explanation
 
+This transaction does use the new join group. The high performance losses are probably caused by the [catalog operations](https://github.com/ADB-Team/railway-db-public/blob/main/doc/catalog-update.txt).
 
 ### Transaction 7
 
@@ -349,6 +372,7 @@ This columnar store couldn't be created with zedstore. During the multiple creat
 
 #### Explanation
 
+This transaction doesn't include a join of `seats`, `wagons` and `trains`, thus making no use of the newly created join group.
 
 ### Backup Transaction 2
 
@@ -367,6 +391,7 @@ This columnar store couldn't be created with zedstore. During the multiple creat
 
 #### Explanation
 
+This transaction doesn't include a join of `seats`, `wagons` and `trains`, thus making no use of the newly created join group.
 
 ### Backup Transaction 4
 
@@ -385,6 +410,7 @@ This columnar store couldn't be created with zedstore. During the multiple creat
 
 #### Explanation
 
+This transaction makes use of the new join group and is indeed sped up a little.
 
 ### Backup Transaction 5
 
@@ -403,6 +429,7 @@ This columnar store couldn't be created with zedstore. During the multiple creat
 
 #### Explanation
 
+This transaction doesn't include a join of `seats`, `wagons` and `trains`, thus making no use of the newly created join group.
 
 ## Join Group 2
 
@@ -425,6 +452,8 @@ This columnar store couldn't be created with zedstore. During the multiple creat
 
 #### Explanation
 
+This transaction doesn't include a join of `contries` and `cities` thus making no use of the newly created join group.
+
 ### Transaction 3
 
 #### Query plans
@@ -442,6 +471,7 @@ This columnar store couldn't be created with zedstore. During the multiple creat
 
 #### Explanation
 
+This transaction doesn't include a join of `contries` and `cities` thus making no use of the newly created join group.
 
 ### Transaction 5
 
@@ -460,6 +490,7 @@ This columnar store couldn't be created with zedstore. During the multiple creat
 
 #### Explanation
 
+This transaction doesn't include a join of `contries` and `cities` thus making no use of the newly created join group. The high performance losses are likely caused by the [catalog operations](https://github.com/ADB-Team/railway-db-public/blob/main/doc/catalog-update.txt).
 
 ### Transaction 7
 
@@ -478,6 +509,7 @@ This columnar store couldn't be created with zedstore. During the multiple creat
 
 #### Explanation
 
+This transaction doesn't include a join of `contries` and `cities` thus making no use of the newly created join group. The high performance losses are likely caused by the [catalog operations](https://github.com/ADB-Team/railway-db-public/blob/main/doc/catalog-update.txt).
 
 ### Backup Transaction 2
 
@@ -496,6 +528,7 @@ This columnar store couldn't be created with zedstore. During the multiple creat
 
 #### Explanation
 
+This transaction doesn't include a join of `contries` and `cities` thus making no use of the newly created join group.
 
 ### Backup Transaction 4
 
@@ -514,6 +547,7 @@ This columnar store couldn't be created with zedstore. During the multiple creat
 
 #### Explanation
 
+This transaction doesn't include a join of `contries` and `cities` thus making no use of the newly created join group.
 
 ### Backup Transaction 5
 
@@ -532,6 +566,7 @@ This columnar store couldn't be created with zedstore. During the multiple creat
 
 #### Explanation
 
+This transaction makes use of the new join group and has significant performance improvements due to that.
 
 
 ## Cstore
