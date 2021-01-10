@@ -2,6 +2,13 @@
 
 ## General conclusions
 
+The setup process of zedstore is not an easy one as it isn't an extension but a fork of Postgres. Included into the main version, however, it would be the easiest to use of all options.
+
+**Issues:**
+
+- no support for join groups, also not as an workaround with views [as suggested in our specification file](https://github.com/ADB-Team/railway-db-public/blob/main/specs/columnar-store.md#postgres-specific-implementation)
+- creating a columnar store with a huge amount of rows (900 472 in case of columnar store 2) seems not to be possible, maybe too much overhead on creation?
+
 ## Columnar Store 1
 
 → see [here](https://github.com/ADB-Team/railway-db-public/blob/main/specs/columnar-store.md#columnar-store-1)
