@@ -977,11 +977,11 @@ This transaction makes use of the new join group and has significant performance
 
 #### Performance
 
-- old avg: 0.5306 s
-- new avg:
-- diff(avg): 
+- old avg: 1.0671 s
+- new avg: 1.0562 s
+- diff(avg): -0.0108 s
 
-→ all runtimes [here](https://github.com/ADB-Team/railway-db-public/blob/main/doc/runtimes_cs.md)
+→ all runtimes [here](https://github.com/ADB-Team/railway-db-public/blob/main/doc/runtimes_cstore.md)
 
 #### Explanation
 
@@ -994,11 +994,11 @@ This transaction makes use of the new join group and has significant performance
 
 #### Performance
 
-- old avg: 3.2264 s
-- new avg:
-- diff(avg): 
+- old avg: 3.1163 s
+- new avg: 2.7586 s
+- diff(avg): -0.3577 s
 
-→ all runtimes [here](https://github.com/ADB-Team/railway-db-public/blob/main/doc/runtimes_cs.md)
+→ all runtimes [here](https://github.com/ADB-Team/railway-db-public/blob/main/doc/runtimes_cstore.md)
 
 #### Explanation
 
@@ -1012,11 +1012,11 @@ This transaction makes use of the new join group and has significant performance
 
 #### Performance
 
-- old avg: 4.3591 s
-- new avg:
-- diff(avg): 
+- old avg: 11.8078 s
+- new avg: 13.5663 s
+- diff(avg): 1.7584 s
 
-→ all runtimes [here](https://github.com/ADB-Team/railway-db-public/blob/main/doc/runtimes_cs.md)
+→ all runtimes [here](https://github.com/ADB-Team/railway-db-public/blob/main/doc/runtimes_cstore.md)
 
 #### Explanation
 
@@ -1030,11 +1030,11 @@ This transaction makes use of the new join group and has significant performance
 
 #### Performance
 
-- old avg: 1.9664 s
-- new avg:
-- diff(avg): 
+- old avg: 7.9865 s
+- new avg: 7.8817 s
+- diff(avg): -0.1047 s
 
-→ all runtimes [here](https://github.com/ADB-Team/railway-db-public/blob/main/doc/runtimes_cs.md)
+→ all runtimes [here](https://github.com/ADB-Team/railway-db-public/blob/main/doc/runtimes_cstore.md)
 
 #### Explanation
 
@@ -1048,11 +1048,11 @@ This transaction makes use of the new join group and has significant performance
 
 #### Performance
 
-- old avg: 1.0949 s
-- new avg:
-- diff(avg): 
+- old avg: 2.4197 s
+- new avg: 2.3037 s
+- diff(avg): -0.1159 s
 
-→ all runtimes [here](https://github.com/ADB-Team/railway-db-public/blob/main/doc/runtimes_cs.md)
+→ all runtimes [here](https://github.com/ADB-Team/railway-db-public/blob/main/doc/runtimes_cstore.md)
 
 #### Explanation
 
@@ -1066,11 +1066,11 @@ This transaction makes use of the new join group and has significant performance
 
 #### Performance
 
-- old avg: 1.5775 s
-- new avg:
-- diff(avg): 
+- old avg: 4.3216 s
+- new avg: 1.4148 s
+- diff(avg): -2.9067 s
 
-→ all runtimes [here](https://github.com/ADB-Team/railway-db-public/blob/main/doc/runtimes_cs.md)
+→ all runtimes [here](https://github.com/ADB-Team/railway-db-public/blob/main/doc/runtimes_cstore.md)
 
 #### Explanation
 
@@ -1084,11 +1084,11 @@ This transaction makes use of the new join group and has significant performance
 
 #### Performance
 
-- old avg: 4.0755 s
-- new avg:
-- diff(avg):
+- old avg: 6.5941 s
+- new avg: 6.9701 s
+- diff(avg): 0.3760 s
 
-→ all runtimes [here](https://github.com/ADB-Team/railway-db-public/blob/main/doc/runtimes_cs.md)
+→ all runtimes [here](https://github.com/ADB-Team/railway-db-public/blob/main/doc/runtimes_cstore.md)
 
 #### Explanation
 
@@ -1106,11 +1106,11 @@ This transaction makes use of the new join group and has significant performance
 
 #### Performance
 
-- old avg: 0.5306 s
-- new avg:
-- diff(avg): 
+- old avg: 1.0671 s
+- new avg: 1.1141 s
+- diff(avg): 0.0470 s
 
-→ all runtimes [here](https://github.com/ADB-Team/railway-db-public/blob/main/doc/runtimes_cs.md)
+→ all runtimes [here](https://github.com/ADB-Team/railway-db-public/blob/main/doc/runtimes_cstore.md)
 
 #### Explanation
 
@@ -1123,11 +1123,11 @@ This transaction makes use of the new join group and has significant performance
 
 #### Performance
 
-- old avg: 3.2264 s
-- new avg:
-- diff(avg): 
+- old avg: 3.1163 s
+- new avg: 2.9998 s
+- diff(avg): -0.1165 s
 
-→ all runtimes [here](https://github.com/ADB-Team/railway-db-public/blob/main/doc/runtimes_cs.md)
+→ all runtimes [here](https://github.com/ADB-Team/railway-db-public/blob/main/doc/runtimes_cstore.md)
 
 #### Explanation
 
@@ -1141,11 +1141,11 @@ This transaction makes use of the new join group and has significant performance
 
 #### Performance
 
-- old avg: 4.3591 s
-- new avg:
-- diff(avg):
+- old avg: 11.8078 s
+- new avg: 11.7937 s
+- diff(avg): -0.0141 s
 
-→ all runtimes [here](https://github.com/ADB-Team/railway-db-public/blob/main/doc/runtimes_cs.md)
+→ all runtimes [here](https://github.com/ADB-Team/railway-db-public/blob/main/doc/runtimes_cstore.md)
 
 #### Explanation
 
@@ -1159,11 +1159,11 @@ This transaction makes use of the new join group and has significant performance
 
 #### Performance
 
-- old avg: 1.9664 s
-- new avg:
-- diff(avg):
+- old avg: 7.9865 s
+- new avg: 7.6251 s
+- diff(avg): -0.3613 s
 
-→ all runtimes [here](https://github.com/ADB-Team/railway-db-public/blob/main/doc/runtimes_cs.md)
+→ all runtimes [here](https://github.com/ADB-Team/railway-db-public/blob/main/doc/runtimes_cstore.md)
 
 #### Explanation
 
@@ -1177,11 +1177,11 @@ This transaction makes use of the new join group and has significant performance
 
 #### Performance
 
-- old avg: 1.0949 s
-- new avg:
-- diff(avg): 
+- old avg: 2.4197 s
+- new avg: 2.2835
+- diff(avg): -0.1362 s
 
-→ all runtimes [here](https://github.com/ADB-Team/railway-db-public/blob/main/doc/runtimes_cs.md)
+→ all runtimes [here](https://github.com/ADB-Team/railway-db-public/blob/main/doc/runtimes_cstore.md)
 
 #### Explanation
 
@@ -1195,11 +1195,11 @@ This transaction makes use of the new join group and has significant performance
 
 #### Performance
 
-- old avg: 1.5775 s
-- new avg:
-- diff(avg): 
+- old avg: 4.3216 s
+- new avg: 4.0125 s
+- diff(avg): -0.3090 s
 
-→ all runtimes [here](https://github.com/ADB-Team/railway-db-public/blob/main/doc/runtimes_cs.md)
+→ all runtimes [here](https://github.com/ADB-Team/railway-db-public/blob/main/doc/runtimes_cstore.md)
 
 #### Explanation
 
@@ -1213,11 +1213,11 @@ This transaction makes use of the new join group and has significant performance
 
 #### Performance
 
-- old avg: 4.0755 s
-- new avg:
-- diff(avg):
+- old avg: 6.5941 s
+- new avg: 0.3263 s
+- diff(avg): -6.2677
 
-→ all runtimes [here](https://github.com/ADB-Team/railway-db-public/blob/main/doc/runtimes_cs.md)
+→ all runtimes [here](https://github.com/ADB-Team/railway-db-public/blob/main/doc/runtimes_cstore.md)
 
 #### Explanation
 
