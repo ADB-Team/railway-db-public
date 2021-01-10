@@ -1001,7 +1001,7 @@ This transaction makes use of the new join group and has significant performance
 → all runtimes [here](https://github.com/ADB-Team/railway-db-public/blob/main/doc/runtimes_cstore.md)
 
 #### Explanation
-
+not used
 
 ### Transaction 5
 
@@ -1037,7 +1037,7 @@ This transaction makes use of the new join group and has significant performance
 → all runtimes [here](https://github.com/ADB-Team/railway-db-public/blob/main/doc/runtimes_cstore.md)
 
 #### Explanation
-
+not used
 
 ### Backup Transaction 2
 
@@ -1055,7 +1055,7 @@ This transaction makes use of the new join group and has significant performance
 → all runtimes [here](https://github.com/ADB-Team/railway-db-public/blob/main/doc/runtimes_cstore.md)
 
 #### Explanation
-
+not used
 
 ### Backup Transaction 4
 
@@ -1091,7 +1091,7 @@ This transaction makes use of the new join group and has significant performance
 → all runtimes [here](https://github.com/ADB-Team/railway-db-public/blob/main/doc/runtimes_cstore.md)
 
 #### Explanation
-
+not used
 
 ## Join Group 2
 
@@ -1113,7 +1113,7 @@ This transaction makes use of the new join group and has significant performance
 → all runtimes [here](https://github.com/ADB-Team/railway-db-public/blob/main/doc/runtimes_cstore.md)
 
 #### Explanation
-
+not used
 ### Transaction 3
 
 #### Query plans
@@ -1130,7 +1130,7 @@ This transaction makes use of the new join group and has significant performance
 → all runtimes [here](https://github.com/ADB-Team/railway-db-public/blob/main/doc/runtimes_cstore.md)
 
 #### Explanation
-
+not used
 
 ### Transaction 5
 
@@ -1148,7 +1148,7 @@ This transaction makes use of the new join group and has significant performance
 → all runtimes [here](https://github.com/ADB-Team/railway-db-public/blob/main/doc/runtimes_cstore.md)
 
 #### Explanation
-
+not used
 
 ### Transaction 7
 
@@ -1184,7 +1184,7 @@ This transaction makes use of the new join group and has significant performance
 → all runtimes [here](https://github.com/ADB-Team/railway-db-public/blob/main/doc/runtimes_cstore.md)
 
 #### Explanation
-
+not used
 
 ### Backup Transaction 4
 
@@ -1202,7 +1202,7 @@ This transaction makes use of the new join group and has significant performance
 → all runtimes [here](https://github.com/ADB-Team/railway-db-public/blob/main/doc/runtimes_cstore.md)
 
 #### Explanation
-
+not used 
 
 ### Backup Transaction 5
 
