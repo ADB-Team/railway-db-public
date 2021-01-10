@@ -4,6 +4,8 @@
 
 The setup process of zedstore is not an easy one as it isn't an extension but a fork of Postgres. Included into the main version, however, it would be the easiest to use of all options.
 
+Join groups were made with materialized views which proved to be quite successful.
+
 **Issues:**
 
 - no support for join groups, also not as an workaround with views [as suggested in our specification file](https://github.com/ADB-Team/railway-db-public/blob/main/specs/columnar-store.md#postgres-specific-implementation)
