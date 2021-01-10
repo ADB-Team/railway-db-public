@@ -15,7 +15,7 @@
 - new avg: 0.5734 s
 - diff(avg): + 0.0428 s
 
-→ all runtimes [here](https://github.com/ADB-Team/railway-db-public/blob/main/doc/runtimes.md)
+→ all runtimes [here](https://github.com/ADB-Team/railway-db-public/blob/main/doc/runtimes_partitions.md)
 
 ### Explanation
 
@@ -34,7 +34,7 @@ This partitions is not used in the query plan, so the partitions not give us a b
 - new avg: 3.2661 s
 - diff(avg): + 0.0397 s
 
-→ all runtimes [here](https://github.com/ADB-Team/railway-db-public/blob/main/doc/runtimes.md)
+→ all runtimes [here](https://github.com/ADB-Team/railway-db-public/blob/main/doc/runtimes_partitions.md)
 
 ### Explanation
 
@@ -53,7 +53,7 @@ A sequential searching is performed through the cities partitions. This not prov
 - new avg: 5.9576 s
 - diff(avg): + 1.5985 s
 
-→ all runtimes [here](https://github.com/ADB-Team/railway-db-public/blob/main/doc/runtimes.md)
+→ all runtimes [here](https://github.com/ADB-Team/railway-db-public/blob/main/doc/runtimes_partitions.md)
 
 ### Explanation
 
@@ -71,7 +71,7 @@ A sequential searching is performed through the cities partitions. This not prov
 - new avg: 4.043 s
 - diff(avg): + 2.0383 s
 
-→ all runtimes [here](https://github.com/ADB-Team/railway-db-public/blob/main/doc/runtimes.md)
+→ all runtimes [here](https://github.com/ADB-Team/railway-db-public/blob/main/doc/runtimes_partitions.md)
 
 ### Explanation
 
@@ -91,7 +91,7 @@ A sequential searching is performed through the cities partitions. This not prov
 - new avg: 1.0856 s
 - diff(avg): -0.0093 s
 
-→ all runtimes [here](https://github.com/ADB-Team/railway-db-public/blob/main/doc/runtimes.md)
+→ all runtimes [here](https://github.com/ADB-Team/railway-db-public/blob/main/doc/runtimes_partitions.md)
 
 ### Explanation
 
@@ -111,7 +111,7 @@ We can see how the partitions is used in the deleting cities part, as only a par
 - new avg: 1.5035 s
 - diff(avg): -0.074 s
 
-→ all runtimes [here](https://github.com/ADB-Team/railway-db-public/blob/main/doc/runtimes.md)
+→ all runtimes [here](https://github.com/ADB-Team/railway-db-public/blob/main/doc/runtimes_partitions.md)
 
 ### Explanation
 
@@ -131,7 +131,7 @@ The performance is so similar due to the transaction is not using the new partit
 - new avg: 0.1363 s
 - diff(avg): -3.9392 s
 
-→ all runtimes [here](https://github.com/ADB-Team/railway-db-public/blob/main/doc/runtimes.md)
+→ all runtimes [here](https://github.com/ADB-Team/railway-db-public/blob/main/doc/runtimes_partitions.md)
 
 ### Explanation
 
@@ -156,7 +156,7 @@ In this case we can see a huge better performance in the query due to a parallel
 - new avg: 0.5962 s
 - diff(avg): + 0.0656 s
 
-→ all runtimes [here](https://github.com/ADB-Team/railway-db-public/blob/main/doc/runtimes.md)
+→ all runtimes [here](https://github.com/ADB-Team/railway-db-public/blob/main/doc/runtimes_partitions.md)
 
 ### Explanation
 
@@ -175,7 +175,7 @@ Seats partitions is used here but the performance is not better. This could be d
 - new avg: 3.146 s
 - diff(avg): -0.0804 s
 
-→ all runtimes [here](https://github.com/ADB-Team/railway-db-public/blob/main/doc/runtimes.md)
+→ all runtimes [here](https://github.com/ADB-Team/railway-db-public/blob/main/doc/runtimes_partitions.md)
 
 ### Explanation
 
@@ -195,7 +195,7 @@ The performance is similar due to the fact that the partition is not used in thi
 - new avg: 6.8495 s
 - diff(avg): + 2.4904 s
 
-→ all runtimes [here](https://github.com/ADB-Team/railway-db-public/blob/main/doc/runtimes.md)
+→ all runtimes [here](https://github.com/ADB-Team/railway-db-public/blob/main/doc/runtimes_partitions.md)
 
 ### Explanation
 
@@ -217,7 +217,7 @@ Seats partitions is used here but the performance is not better. This could be d
 - new avg: 4.3022 s
 - diff(avg): + 2.3358 s
 
-→ all runtimes [here](https://github.com/ADB-Team/railway-db-public/blob/main/doc/runtimes.md)
+→ all runtimes [here](https://github.com/ADB-Team/railway-db-public/blob/main/doc/runtimes_partitions.md)
 
 ### Explanation
 
@@ -237,7 +237,7 @@ The partition is not used but the time is so much worst than before. This could 
 - new avg: 1.1087 s
 - diff(avg): + 0.0138 s
 
-→ all runtimes [here](https://github.com/ADB-Team/railway-db-public/blob/main/doc/runtimes.md)
+→ all runtimes [here](https://github.com/ADB-Team/railway-db-public/blob/main/doc/runtimes_partitions.md)
 
 ### Explanation
 
@@ -257,7 +257,7 @@ The time is so similar because of not be using the new partition in any part of 
 - new avg: 1.6376 s
 - diff(avg): + 0.0601 s
 
-→ all runtimes [here](https://github.com/ADB-Team/railway-db-public/blob/main/doc/runtimes.md)
+→ all runtimes [here](https://github.com/ADB-Team/railway-db-public/blob/main/doc/runtimes_partitions.md)
 
 ### Explanation
 
@@ -277,7 +277,7 @@ Seats partitions is used here but the performance is not better. This should be 
 - new avg: 3.9209 s
 - diff(avg): -0.1546 s
 
-→ all runtimes [here](https://github.com/ADB-Team/railway-db-public/blob/main/doc/runtimes.md)
+→ all runtimes [here](https://github.com/ADB-Team/railway-db-public/blob/main/doc/runtimes_partitions.md)
 
 ### Explanation
 
@@ -302,7 +302,7 @@ The time is better but the partition is not used anywhere in the query plan. Thi
 - new avg: 0.6186 s
 - diff(avg): + 0.088 s
 
-→ all runtimes [here](https://github.com/ADB-Team/railway-db-public/blob/main/doc/runtimes.md)
+→ all runtimes [here](https://github.com/ADB-Team/railway-db-public/blob/main/doc/runtimes_partitions.md)
 
 ### Explanation
 It's not use a lot so we don't see different
@@ -319,7 +319,7 @@ It's not use a lot so we don't see different
 - new avg: 3.2901 s
 - diff(avg): + 0.0637 s
 
-→ all runtimes [here](https://github.com/ADB-Team/railway-db-public/blob/main/doc/runtimes.md)
+→ all runtimes [here](https://github.com/ADB-Team/railway-db-public/blob/main/doc/runtimes_partitions.md)
 
 ### Explanation
 Not used
@@ -337,7 +337,7 @@ Not used
 - new avg: 6.2145 s
 - diff(avg): + 1.8554 s
 
-→ all runtimes [here](https://github.com/ADB-Team/railway-db-public/blob/main/doc/runtimes.md)
+→ all runtimes [here](https://github.com/ADB-Team/railway-db-public/blob/main/doc/runtimes_partitions.md)
 
 ### Explanation
 The cost is more important for each connection SQL found, so the time is longer
@@ -355,7 +355,7 @@ The cost is more important for each connection SQL found, so the time is longer
 - new avg: 8.3206 s
 - diff(avg): + 6.3542 s
 
-→ all runtimes [here](https://github.com/ADB-Team/railway-db-public/blob/main/doc/runtimes.md)
+→ all runtimes [here](https://github.com/ADB-Team/railway-db-public/blob/main/doc/runtimes_partitions.md)
 
 ### Explanation
 Delete much time for each partition and for every he found.
@@ -373,7 +373,7 @@ Delete much time for each partition and for every he found.
 - new avg: 1.1698 s
 - diff(avg): + 0.0749 s
 
-→ all runtimes [here](https://github.com/ADB-Team/railway-db-public/blob/main/doc/runtimes.md)
+→ all runtimes [here](https://github.com/ADB-Team/railway-db-public/blob/main/doc/runtimes_partitions.md)
 
 ### Explanation
 Not used 
@@ -391,7 +391,7 @@ Not used
 - new avg: 1.4947 s
 - diff(avg): -0.0828 s
 
-→ all runtimes [here](https://github.com/ADB-Team/railway-db-public/blob/main/doc/runtimes.md)
+→ all runtimes [here](https://github.com/ADB-Team/railway-db-public/blob/main/doc/runtimes_partitions.md)
 
 ### Explanation
 Not used 
@@ -409,7 +409,7 @@ Not used
 - new avg: 3.9131 s
 - diff(avg): -0.1624 s
 
-→ all runtimes [here](https://github.com/ADB-Team/railway-db-public/blob/main/doc/runtimes.md)
+→ all runtimes [here](https://github.com/ADB-Team/railway-db-public/blob/main/doc/runtimes_partitions.md)
 
 ### Explanation
 Not used 
@@ -431,7 +431,7 @@ Not used
 - new avg: 0.6067 s
 - diff(avg): + 0.0761 s
 
-→ all runtimes [here](https://github.com/ADB-Team/railway-db-public/blob/main/doc/runtimes.md)
+→ all runtimes [here](https://github.com/ADB-Team/railway-db-public/blob/main/doc/runtimes_partitions.md)
 
 ### Explanation
 Not used because of the number of rows
@@ -448,7 +448,7 @@ Not used because of the number of rows
 - new avg: 0.4126 s
 - diff(avg): -2.8138 s
 
-→ all runtimes [here](https://github.com/ADB-Team/railway-db-public/blob/main/doc/runtimes.md)
+→ all runtimes [here](https://github.com/ADB-Team/railway-db-public/blob/main/doc/runtimes_partitions.md)
 
 ### Explanation -->
 
@@ -466,7 +466,7 @@ Not used because of the number of rows
 - new avg: 6.8883 s
 - diff(avg): 2.5292 s
 
-→ all runtimes [here](https://github.com/ADB-Team/railway-db-public/blob/main/doc/runtimes.md)
+→ all runtimes [here](https://github.com/ADB-Team/railway-db-public/blob/main/doc/runtimes_partitions.md)
 
 ### Explanation
 
@@ -486,7 +486,7 @@ The time is worst due to the sequential scanning of the schedule partitions.
 - new avg: 0.1825 s
 - diff(avg): -1.7839 s
 
-→ all runtimes [here](https://github.com/ADB-Team/railway-db-public/blob/main/doc/runtimes.md)
+→ all runtimes [here](https://github.com/ADB-Team/railway-db-public/blob/main/doc/runtimes_partitions.md)
 
 ### Explanation
 
@@ -506,7 +506,7 @@ The partitions is used and the time is better due to the parallel operations in 
 - new avg: 1.0938 s
 - diff(avg): -0.0011 s
 
-→ all runtimes [here](https://github.com/ADB-Team/railway-db-public/blob/main/doc/runtimes.md)
+→ all runtimes [here](https://github.com/ADB-Team/railway-db-public/blob/main/doc/runtimes_partitions.md)
 
 ### Explanation
 
@@ -526,7 +526,7 @@ The time is so similar because the partition is not used.
 - new avg: 1.4176 s
 - diff(avg): -0.1599 s
 
-→ all runtimes [here](https://github.com/ADB-Team/railway-db-public/blob/main/doc/runtimes.md)
+→ all runtimes [here](https://github.com/ADB-Team/railway-db-public/blob/main/doc/runtimes_partitions.md)
 
 ### Explanation
 
@@ -546,7 +546,7 @@ The time is so similar because the partition is not used.
 - new avg: 3.9609 s
 - diff(avg): -0.1146 s
 
-→ all runtimes [here](https://github.com/ADB-Team/railway-db-public/blob/main/doc/runtimes.md)
+→ all runtimes [here](https://github.com/ADB-Team/railway-db-public/blob/main/doc/runtimes_partitions.md)
 
 ### Explanation
 
@@ -570,7 +570,7 @@ The time is so similar because the partition is not used.
 - new avg: 0.6337 s
 - diff(avg): + 0.1031 s
 
-→ all runtimes [here](https://github.com/ADB-Team/railway-db-public/blob/main/doc/runtimes.md)
+→ all runtimes [here](https://github.com/ADB-Team/railway-db-public/blob/main/doc/runtimes_partitions.md)
 
 ### Explanation
 
@@ -589,7 +589,7 @@ The partition is used but the time is not better because of the sequential scann
 - new avg: 0.5571 s
 - diff(avg): -2.6693 s
 
-→ all runtimes [here](https://github.com/ADB-Team/railway-db-public/blob/main/doc/runtimes.md)
+→ all runtimes [here](https://github.com/ADB-Team/railway-db-public/blob/main/doc/runtimes_partitions.md)
 
 ### Explanation -->
 
@@ -607,7 +607,7 @@ The partition is used but the time is not better because of the sequential scann
 - new avg: 6.7835 s
 - diff(avg): + 2.4244 s
 
-→ all runtimes [here](https://github.com/ADB-Team/railway-db-public/blob/main/doc/runtimes.md)
+→ all runtimes [here](https://github.com/ADB-Team/railway-db-public/blob/main/doc/runtimes_partitions.md)
 
 ### Explanation
 
@@ -625,7 +625,7 @@ The partition is used but the time is not better because of the sequential scann
 - new avg: 3.9806 s
 - diff(avg): + 2.0142 s
 
-→ all runtimes [here](https://github.com/ADB-Team/railway-db-public/blob/main/doc/runtimes.md)
+→ all runtimes [here](https://github.com/ADB-Team/railway-db-public/blob/main/doc/runtimes_partitions.md)
 
 ### Explanation
 
@@ -643,7 +643,7 @@ The partition is used but the time is not better because of the sequential scann
 - new avg: 1.2085 s
 - diff(avg): + 0.1136 s
 
-→ all runtimes [here](https://github.com/ADB-Team/railway-db-public/blob/main/doc/runtimes.md)
+→ all runtimes [here](https://github.com/ADB-Team/railway-db-public/blob/main/doc/runtimes_partitions.md)
 
 ### Explanation
 
@@ -661,7 +661,7 @@ The partition is used but the time is not better because of the sequential scann
 - new avg: 1.5866 s
 - diff(avg): + 0.0091 s
 
-→ all runtimes [here](https://github.com/ADB-Team/railway-db-public/blob/main/doc/runtimes.md)
+→ all runtimes [here](https://github.com/ADB-Team/railway-db-public/blob/main/doc/runtimes_partitions.md)
 
 ### Explanation
 
@@ -679,7 +679,7 @@ The partition is used but the time is not better because of the sequential scann
 - new avg: 3.7962 s
 - diff(avg): -0.2793 s
 
-→ all runtimes [here](https://github.com/ADB-Team/railway-db-public/blob/main/doc/runtimes.md)
+→ all runtimes [here](https://github.com/ADB-Team/railway-db-public/blob/main/doc/runtimes_partitions.md)
 
 ### Explanation
 
@@ -701,7 +701,7 @@ The partition is used but the time is not better because of the sequential scann
 - new avg: 0.6115 s
 - diff(avg): + 0.0809 s
 
-→ all runtimes [here](https://github.com/ADB-Team/railway-db-public/blob/main/doc/runtimes.md)
+→ all runtimes [here](https://github.com/ADB-Team/railway-db-public/blob/main/doc/runtimes_partitions.md)
 
 ### Explanation
 
@@ -718,7 +718,7 @@ The partition is used but the time is not better because of the sequential scann
 - new avg: 4.1649 s
 - diff(avg): + 0.9385 s
 
-→ all runtimes [here](https://github.com/ADB-Team/railway-db-public/blob/main/doc/runtimes.md)
+→ all runtimes [here](https://github.com/ADB-Team/railway-db-public/blob/main/doc/runtimes_partitions.md)
 
 ### Explanation
 
@@ -736,7 +736,7 @@ The partition is used but the time is not better because of the sequential scann
 - new avg: 6.3846 s
 - diff(avg): + 2.0255 s
 
-→ all runtimes [here](https://github.com/ADB-Team/railway-db-public/blob/main/doc/runtimes.md)
+→ all runtimes [here](https://github.com/ADB-Team/railway-db-public/blob/main/doc/runtimes_partitions.md)
 
 ### Explanation
 
@@ -754,7 +754,7 @@ The partition is used but the time is not better because of the sequential scann
 - new avg: 4.7118 s
 - diff(avg): + 2.7454 s
 
-→ all runtimes [here](https://github.com/ADB-Team/railway-db-public/blob/main/doc/runtimes.md)
+→ all runtimes [here](https://github.com/ADB-Team/railway-db-public/blob/main/doc/runtimes_partitions.md)
 
 ### Explanation
 
@@ -772,7 +772,7 @@ The partition is used but the time is not better because of the sequential scann
 - new avg: 1.1266 s
 - diff(avg): + 0.0317 s
 
-→ all runtimes [here](https://github.com/ADB-Team/railway-db-public/blob/main/doc/runtimes.md)
+→ all runtimes [here](https://github.com/ADB-Team/railway-db-public/blob/main/doc/runtimes_partitions.md)
 
 ### Explanation
 
@@ -790,7 +790,7 @@ The partition is used but the time is not better because of the sequential scann
 - new avg: 1.8516 s
 - diff(avg): + 0.2741 s
 
-→ all runtimes [here](https://github.com/ADB-Team/railway-db-public/blob/main/doc/runtimes.md)
+→ all runtimes [here](https://github.com/ADB-Team/railway-db-public/blob/main/doc/runtimes_partitions.md)
 
 ### Explanation
 
@@ -808,7 +808,7 @@ The partition is used but the time is not better because of the sequential scann
 - new avg: 3.8013 s
 - diff(avg): -0.2742 s
 
-→ all runtimes [here](https://github.com/ADB-Team/railway-db-public/blob/main/doc/runtimes.md)
+→ all runtimes [here](https://github.com/ADB-Team/railway-db-public/blob/main/doc/runtimes_partitions.md)
 
 ### Explanation
 
@@ -831,7 +831,7 @@ The partition is used but the time is not better because of the sequential scann
 - new avg: 0.5995 s
 - diff(avg): + 0.0689 s
 
-→ all runtimes [here](https://github.com/ADB-Team/railway-db-public/blob/main/doc/runtimes.md)
+→ all runtimes [here](https://github.com/ADB-Team/railway-db-public/blob/main/doc/runtimes_partitions.md)
 
 ### Explanation
 
@@ -848,7 +848,7 @@ The partition is used but the time is not better because of the sequential scann
 - new avg: 3.1418 s
 - diff(avg): -0.0846 s
 
-→ all runtimes [here](https://github.com/ADB-Team/railway-db-public/blob/main/doc/runtimes.md)
+→ all runtimes [here](https://github.com/ADB-Team/railway-db-public/blob/main/doc/runtimes_partitions.md)
 
 ### Explanation
 
@@ -866,7 +866,7 @@ The partition is used but the time is not better because of the sequential scann
 - new avg: 5.9846 s
 - diff(avg): + 1.6255 s
 
-→ all runtimes [here](https://github.com/ADB-Team/railway-db-public/blob/main/doc/runtimes.md)
+→ all runtimes [here](https://github.com/ADB-Team/railway-db-public/blob/main/doc/runtimes_partitions.md)
 
 ### Explanation
 
@@ -884,7 +884,7 @@ The partition is used but the time is not better because of the sequential scann
 - new avg: 3.9884 s
 - diff(avg): + 2.022 s
 
-→ all runtimes [here](https://github.com/ADB-Team/railway-db-public/blob/main/doc/runtimes.md)
+→ all runtimes [here](https://github.com/ADB-Team/railway-db-public/blob/main/doc/runtimes_partitions.md)
 
 ### Explanation
 
@@ -902,7 +902,7 @@ The partition is used but the time is not better because of the sequential scann
 - new avg: 1.0975 s
 - diff(avg): + 0.0026 s
 
-→ all runtimes [here](https://github.com/ADB-Team/railway-db-public/blob/main/doc/runtimes.md)
+→ all runtimes [here](https://github.com/ADB-Team/railway-db-public/blob/main/doc/runtimes_partitions.md)
 
 ### Explanation
 
@@ -920,7 +920,7 @@ The partition is used but the time is not better because of the sequential scann
 - new avg: 1.9942 s
 - diff(avg): + 0.4167 s
 
-→ all runtimes [here](https://github.com/ADB-Team/railway-db-public/blob/main/doc/runtimes.md)
+→ all runtimes [here](https://github.com/ADB-Team/railway-db-public/blob/main/doc/runtimes_partitions.md)
 
 ### Explanation
 
@@ -938,7 +938,7 @@ The partition is used but the time is not better because of the sequential scann
 - new avg: 3.783 s
 - diff(avg): -0.2925 s
 
-→ all runtimes [here](https://github.com/ADB-Team/railway-db-public/blob/main/doc/runtimes.md)
+→ all runtimes [here](https://github.com/ADB-Team/railway-db-public/blob/main/doc/runtimes_partitions.md)
 
 ### Explanation
 
@@ -959,7 +959,7 @@ The partition is used but the time is not better because of the sequential scann
 - new avg:
 - diff(avg):
 
-→ all runtimes [here](https://github.com/ADB-Team/railway-db-public/blob/main/doc/runtimes.md)
+→ all runtimes [here](https://github.com/ADB-Team/railway-db-public/blob/main/doc/runtimes_partitions.md)
 
 ### Explanation
 
@@ -976,7 +976,7 @@ The partition is used but the time is not better because of the sequential scann
 - new avg:
 - diff(avg):
 
-→ all runtimes [here](https://github.com/ADB-Team/railway-db-public/blob/main/doc/runtimes.md)
+→ all runtimes [here](https://github.com/ADB-Team/railway-db-public/blob/main/doc/runtimes_partitions.md)
 
 ### Explanation
 
@@ -994,7 +994,7 @@ The partition is used but the time is not better because of the sequential scann
 - new avg:
 - diff(avg):
 
-→ all runtimes [here](https://github.com/ADB-Team/railway-db-public/blob/main/doc/runtimes.md)
+→ all runtimes [here](https://github.com/ADB-Team/railway-db-public/blob/main/doc/runtimes_partitions.md)
 
 ### Explanation
 
@@ -1012,7 +1012,7 @@ The partition is used but the time is not better because of the sequential scann
 - new avg:
 - diff(avg):
 
-→ all runtimes [here](https://github.com/ADB-Team/railway-db-public/blob/main/doc/runtimes.md)
+→ all runtimes [here](https://github.com/ADB-Team/railway-db-public/blob/main/doc/runtimes_partitions.md)
 
 ### Explanation
 
@@ -1030,7 +1030,7 @@ The partition is used but the time is not better because of the sequential scann
 - new avg:
 - diff(avg):
 
-→ all runtimes [here](https://github.com/ADB-Team/railway-db-public/blob/main/doc/runtimes.md)
+→ all runtimes [here](https://github.com/ADB-Team/railway-db-public/blob/main/doc/runtimes_partitions.md)
 
 ### Explanation
 
@@ -1048,7 +1048,7 @@ The partition is used but the time is not better because of the sequential scann
 - new avg:
 - diff(avg):
 
-→ all runtimes [here](https://github.com/ADB-Team/railway-db-public/blob/main/doc/runtimes.md)
+→ all runtimes [here](https://github.com/ADB-Team/railway-db-public/blob/main/doc/runtimes_partitions.md)
 
 ### Explanation
 
@@ -1066,6 +1066,6 @@ The partition is used but the time is not better because of the sequential scann
 - new avg:
 - diff(avg):
 
-→ all runtimes [here](https://github.com/ADB-Team/railway-db-public/blob/main/doc/runtimes.md)
+→ all runtimes [here](https://github.com/ADB-Team/railway-db-public/blob/main/doc/runtimes_partitions.md)
 
 ### Explanation -->
