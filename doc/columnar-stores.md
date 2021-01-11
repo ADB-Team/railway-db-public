@@ -594,6 +594,16 @@ This transaction makes use of the new join group and has significant performance
 
 ## General conclusions
 
+The advantages of cstore are:
+- You can use external data because using a external tool
+
+The disadvantages are:
+- You can't use DELETE and UPDATE operations
+- You can't use indexes (because of using foreign tables)
+- The log is not displayed in posgresql log files
+- You can only see the functions log
+- Version 12 not supported in all OS
+
 ## Columnar Store 1
 
 → see [here](https://github.com/ADB-Team/railway-db-public/blob/main/specs/columnar-store.md#columnar-store-1)
@@ -603,34 +613,32 @@ This transaction makes use of the new join group and has significant performance
 #### Query plans
 
 - [old query plan](https://github.com/ADB-Team/railway-db-public/blob/main/query-plans/original/transaction1.md)
-- [new query plan]()
+- [new query plan](https://github.com/ADB-Team/railway-db-public/blob/main/query-plans/cstore/cs1/transaction1.md)
 
 #### Performance
 
 - old avg: 0.5306 s
-- new avg: 
-- diff(avg): 
+- new avg: 0,536 s
+- diff(avg): 0,0054
 
 → all runtimes [here](https://github.com/ADB-Team/railway-db-public/blob/main/doc/runtimes_cs.md)
 
 #### Explanation
+
+The time is the same because the column not seems to be used.
+
+
 
 ### Transaction 3
 
 #### Query plans
 
 - [old query plan](https://github.com/ADB-Team/railway-db-public/blob/main/query-plans/original/transaction3.md)
-- [new query plan]()
-
-#### Performance
-
-- old avg: 3.2264 s
-- new avg:
-- diff(avg):
-
-→ all runtimes [here](https://github.com/ADB-Team/railway-db-public/blob/main/doc/runtimes_cs.md)
+- [new query plan](https://github.com/ADB-Team/railway-db-public/blob/main/query-plans/cstore/cs1/transaction3.md)
 
 #### Explanation
+
+The operations of this query are not allowed in cstore.
 
 
 ### Transaction 5
@@ -638,17 +646,19 @@ This transaction makes use of the new join group and has significant performance
 #### Query plans
 
 - [old query plan](https://github.com/ADB-Team/railway-db-public/blob/main/query-plans/original/transaction5.md)
-- [new query plan]()
+- [new query plan](https://github.com/ADB-Team/railway-db-public/blob/main/query-plans/cstore/cs1/transaction5.md)
 
 #### Performance
 
 - old avg: 4.3591 s
-- new avg:
-- diff(avg):
+- new avg: 7,5983 s
+- diff(avg): 3,2392 s
 
 → all runtimes [here](https://github.com/ADB-Team/railway-db-public/blob/main/doc/runtimes_cs.md)
 
 #### Explanation
+
+The time is worst because of the foreign sequential scan.
 
 
 ### Transaction 7
@@ -656,17 +666,19 @@ This transaction makes use of the new join group and has significant performance
 #### Query plans
 
 - [old query plan](https://github.com/ADB-Team/railway-db-public/blob/main/query-plans/original/transaction7.md)
-- [new query plan]()
+- [new query plan](https://github.com/ADB-Team/railway-db-public/blob/main/query-plans/cstore/cs1/transaction7.md)
 
 #### Performance
 
 - old avg: 1.9664 s
-- new avg:
-- diff(avg): 
+- new avg: 5,0608 s
+- diff(avg): 3,0944 s
 
 → all runtimes [here](https://github.com/ADB-Team/railway-db-public/blob/main/doc/runtimes_cs.md)
 
 #### Explanation
+
+The time is worst because but the table not seems to be used.
 
 
 ### Backup Transaction 2
@@ -674,17 +686,19 @@ This transaction makes use of the new join group and has significant performance
 #### Query plans
 
 - [old query plan](https://github.com/ADB-Team/railway-db-public/blob/main/query-plans/original/backup-transaction2.md)
-- [new query plan]()
+- [new query plan](https://github.com/ADB-Team/railway-db-public/blob/main/query-plans/cstore/cs1/backup-transaction2.md)
 
 #### Performance
 
 - old avg: 1.0949 s
-- new avg:
-- diff(avg):
+- new avg: 1,4458 s
+- diff(avg): 0,3509 s
 
 → all runtimes [here](https://github.com/ADB-Team/railway-db-public/blob/main/doc/runtimes_cs.md)
 
 #### Explanation
+
+The time is worst because but the table not seems to be used.
 
 
 ### Backup Transaction 4
@@ -692,17 +706,19 @@ This transaction makes use of the new join group and has significant performance
 #### Query plans
 
 - [old query plan](https://github.com/ADB-Team/railway-db-public/blob/main/query-plans/original/backup-transaction4.md)
-- [new query plan]()
+- [new query plan](https://github.com/ADB-Team/railway-db-public/blob/main/query-plans/cstore/cs1/backup-transaction4.md)
 
 #### Performance
 
 - old avg: 1.5775 s
-- new avg:
-- diff(avg):
+- new avg: 1,6581 s
+- diff(avg): 0,0806 s
 
 → all runtimes [here](https://github.com/ADB-Team/railway-db-public/blob/main/doc/runtimes_cs.md)
 
 #### Explanation
+
+The time is worst because but the table not seems to be used.
 
 
 ### Backup Transaction 5
@@ -710,17 +726,19 @@ This transaction makes use of the new join group and has significant performance
 #### Query plans
 
 - [old query plan](https://github.com/ADB-Team/railway-db-public/blob/main/query-plans/original/backup-transaction5.md)
-- [new query plan]()
+- [new query plan](https://github.com/ADB-Team/railway-db-public/blob/main/query-plans/cstore/cs1/backup-transaction5.md)
 
 #### Performance
 
 - old avg: 4.0755 s
-- new avg:
-- diff(avg):
+- new avg: 5,1264 s
+- diff(avg): 1,0509 s
 
 → all runtimes [here](https://github.com/ADB-Team/railway-db-public/blob/main/doc/runtimes_cs.md)
 
 #### Explanation
+
+The time is worst because of the foreign sequential scan.
 
 
 
@@ -733,34 +751,38 @@ This transaction makes use of the new join group and has significant performance
 #### Query plans
 
 - [old query plan](https://github.com/ADB-Team/railway-db-public/blob/main/query-plans/original/transaction1.md)
-- [new query plan]()
+- [new query plan](https://github.com/ADB-Team/railway-db-public/blob/main/query-plans/cstore/cs2/transaction1.md)
 
 #### Performance
 
 - old avg: 0.5306 s
-- new avg:
-- diff(avg):
+- new avg: 0,6375 s
+- diff(avg): 0,1069 s
 
 → all runtimes [here](https://github.com/ADB-Team/railway-db-public/blob/main/doc/runtimes_cs.md)
 
 #### Explanation
+
+The time is worst because of the CTE scan in the rows collected from seats.
 
 ### Transaction 3
 
 #### Query plans
 
 - [old query plan](https://github.com/ADB-Team/railway-db-public/blob/main/query-plans/original/transaction3.md)
-- [new query plan]()
+- [new query plan](https://github.com/ADB-Team/railway-db-public/blob/main/query-plans/cstore/cs2/transaction3.md)
 
 #### Performance
 
 - old avg: 3.2264 s
-- new avg:
-- diff(avg):
+- new avg: 4,028 s
+- diff(avg): 0,801600000000001 s
 
 → all runtimes [here](https://github.com/ADB-Team/railway-db-public/blob/main/doc/runtimes_cs.md)
 
 #### Explanation
+
+The time is worst because but the table not seems to be used.
 
 
 ### Transaction 5
@@ -768,17 +790,19 @@ This transaction makes use of the new join group and has significant performance
 #### Query plans
 
 - [old query plan](https://github.com/ADB-Team/railway-db-public/blob/main/query-plans/original/transaction5.md)
-- [new query plan]()
+- [new query plan](https://github.com/ADB-Team/railway-db-public/blob/main/query-plans/cstore/cs2/transaction5.md)
 
 #### Performance
 
 - old avg: 4.3591 s
-- new avg:
-- diff(avg):
+- new avg: 7,5067 s
+- diff(avg): 3,1476 s
 
 → all runtimes [here](https://github.com/ADB-Team/railway-db-public/blob/main/doc/runtimes_cs.md)
 
 #### Explanation
+
+The time is worst because but the table not seems to be used.
 
 
 ### Transaction 7
@@ -786,17 +810,19 @@ This transaction makes use of the new join group and has significant performance
 #### Query plans
 
 - [old query plan](https://github.com/ADB-Team/railway-db-public/blob/main/query-plans/original/transaction7.md)
-- [new query plan]()
+- [new query plan](https://github.com/ADB-Team/railway-db-public/blob/main/query-plans/cstore/cs2/transaction7.md)
 
 #### Performance
 
 - old avg: 1.9664 s
-- new avg:
-- diff(avg):
+- new avg: 3,1476 s
+- diff(avg): 2,6711 s
 
 → all runtimes [here](https://github.com/ADB-Team/railway-db-public/blob/main/doc/runtimes_cs.md)
 
 #### Explanation
+
+The time is worst because but the table not seems to be used.
 
 
 ### Backup Transaction 2
@@ -804,17 +830,19 @@ This transaction makes use of the new join group and has significant performance
 #### Query plans
 
 - [old query plan](https://github.com/ADB-Team/railway-db-public/blob/main/query-plans/original/backup-transaction2.md)
-- [new query plan]()
+- [new query plan](https://github.com/ADB-Team/railway-db-public/blob/main/query-plans/cstore/cs2/backup-transaction2.md)
 
 #### Performance
 
 - old avg: 1.0949 s
-- new avg:
-- diff(avg): 
+- new avg: 1,527 s
+- diff(avg): 0,4321 s
 
 → all runtimes [here](https://github.com/ADB-Team/railway-db-public/blob/main/doc/runtimes_cs.md)
 
 #### Explanation
+
+The time is worst because but the table not seems to be used.
 
 
 ### Backup Transaction 4
@@ -822,17 +850,19 @@ This transaction makes use of the new join group and has significant performance
 #### Query plans
 
 - [old query plan](https://github.com/ADB-Team/railway-db-public/blob/main/query-plans/original/backup-transaction4.md)
-- [new query plan]()
+- [new query plan](https://github.com/ADB-Team/railway-db-public/blob/main/query-plans/cstore/cs2/backup-transaction4.md)
 
 #### Performance
 
 - old avg: 1.5775 s
-- new avg:
-- diff(avg):
+- new avg: 2,6379 s
+- diff(avg): 1,0604 s
 
 → all runtimes [here](https://github.com/ADB-Team/railway-db-public/blob/main/doc/runtimes_cs.md)
 
 #### Explanation
+
+The time is worst because of the CTE scan in the rows collected from seats.
 
 
 ### Backup Transaction 5
@@ -840,21 +870,23 @@ This transaction makes use of the new join group and has significant performance
 #### Query plans
 
 - [old query plan](https://github.com/ADB-Team/railway-db-public/blob/main/query-plans/original/backup-transaction5.md)
-- [new query plan]()
+- [new query plan](https://github.com/ADB-Team/railway-db-public/blob/main/query-plans/cstore/cs2/backup-transaction5.md)
 
 #### Performance
 
 - old avg: 4.0755 s
-- new avg:
-- diff(avg): 
+- new avg: 4,3946 
+- diff(avg): 0,3191 s
 
 → all runtimes [here](https://github.com/ADB-Team/railway-db-public/blob/main/doc/runtimes_cs.md)
 
 #### Explanation
 
+The time is worst because but the table not seems to be used.
 
 
-## Columnar Store 3
+
+<!-- ## Columnar Store 3
 
 → see [here](https://github.com/ADB-Team/railway-db-public/blob/main/specs/partitions.md#columnar-store-3)
 
@@ -980,7 +1012,7 @@ This transaction makes use of the new join group and has significant performance
 
 → all runtimes [here](https://github.com/ADB-Team/railway-db-public/blob/main/doc/runtimes_cs.md)
 
-#### Explanation
+#### Explanation -->
 
 
 ## Join Group 1
