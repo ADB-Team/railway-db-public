@@ -593,7 +593,7 @@ This transaction makes use of the new join group and has significant performance
 ## Cstore
 
 ## General conclusions
-
+Cstore is easy to used, the join group is working (if you create a foreign table and insert into this table the join). With Cstore is ***impossible to Update or Delete raws*** .
 ## Columnar Store 1
 
 → see [here](https://github.com/ADB-Team/railway-db-public/blob/main/specs/columnar-store.md#columnar-store-1)
