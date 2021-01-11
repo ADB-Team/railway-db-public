@@ -12,7 +12,6 @@ Table of Contents
       * [General conclusions](#general-conclusions-1)
       * [Columnar Store 1](#columnar-store-1-1)
       * [Columnar Store 2](#columnar-store-2-1)
-      * [Columnar Store 3](#columnar-store-3-1)
       * [Join Group 1](#join-group-1-1)
       * [Join Group 2](#join-group-2-1)
 
