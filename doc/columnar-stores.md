@@ -593,7 +593,6 @@ This transaction makes use of the new join group and has significant performance
 ## Cstore
 
 ## General conclusions
-<<<<<<< HEAD
 
 The advantages of cstore are:
 - You can use external data because using a external tool
@@ -605,9 +604,6 @@ The disadvantages are:
 - You can only see the functions log
 - Version 12 not supported in all OS
 
-=======
-Cstore is easy to used, the join group is working (if you create a foreign table and insert into this table the join). With Cstore is ***impossible to Update or Delete raws*** . We don't have ***entire query plan*** also. The solution find to add at the beginning of transactions ***ANALYZE EXPLAIN***.
->>>>>>> de64e1de1cf5be9564f46cda866c3c60727162ec
 ## Columnar Store 1
 
 → see [here](https://github.com/ADB-Team/railway-db-public/blob/main/specs/columnar-store.md#columnar-store-1)
