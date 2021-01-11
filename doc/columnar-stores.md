@@ -593,6 +593,7 @@ This transaction makes use of the new join group and has significant performance
 ## Cstore
 
 ## General conclusions
+<<<<<<< HEAD
 
 The advantages of cstore are:
 - You can use external data because using a external tool
@@ -604,6 +605,9 @@ The disadvantages are:
 - You can only see the functions log
 - Version 12 not supported in all OS
 
+=======
+Cstore is easy to used, the join group is working (if you create a foreign table and insert into this table the join). With Cstore is ***impossible to Update or Delete raws*** . We don't have ***entire query plan*** also. The solution find to add at the beginning of transactions ***ANALYZE EXPLAIN***.
+>>>>>>> de64e1de1cf5be9564f46cda866c3c60727162ec
 ## Columnar Store 1
 
 → see [here](https://github.com/ADB-Team/railway-db-public/blob/main/specs/columnar-store.md#columnar-store-1)
@@ -1024,7 +1028,7 @@ The time is worst because but the table not seems to be used.
 #### Query plans
 
 - [old query plan](https://github.com/ADB-Team/railway-db-public/blob/main/query-plans/original/transaction1.md)
-- [new query plan]()
+- [new query plan](https://github.com/ADB-Team/railway-db-public/blob/main/query-plans/columnar-stores/zedstore/jg1t1.md)
 
 #### Performance
 
@@ -1035,13 +1039,13 @@ The time is worst because but the table not seems to be used.
 → all runtimes [here](https://github.com/ADB-Team/railway-db-public/blob/main/doc/runtimes_cstore.md)
 
 #### Explanation
-
+not used
 ### Transaction 3
 
 #### Query plans
 
 - [old query plan](https://github.com/ADB-Team/railway-db-public/blob/main/query-plans/original/transaction3.md)
-- [new query plan]()
+- [new query plan](https://github.com/ADB-Team/railway-db-public/blob/main/query-plans/original/transaction3.md)
 
 #### Performance
 
@@ -1059,7 +1063,7 @@ not used
 #### Query plans
 
 - [old query plan](https://github.com/ADB-Team/railway-db-public/blob/main/query-plans/original/transaction5.md)
-- [new query plan]()
+- [new query plan](https://github.com/ADB-Team/railway-db-public/blob/main/query-plans/columnar-stores/zedstore/jg1t5.md)
 
 #### Performance
 
@@ -1070,7 +1074,7 @@ not used
 → all runtimes [here](https://github.com/ADB-Team/railway-db-public/blob/main/doc/runtimes_cstore.md)
 
 #### Explanation
-
+it's look better (the cost is lower than the original). I don't know.
 
 ### Transaction 7
 
@@ -1113,7 +1117,7 @@ not used
 #### Query plans
 
 - [old query plan](https://github.com/ADB-Team/railway-db-public/blob/main/query-plans/original/backup-transaction4.md)
-- [new query plan]()
+- [new query plan](https://github.com/ADB-Team/railway-db-public/blob/main/query-plans/columnar-stores/zedstore/jg1bt4.md)
 
 #### Performance
 
@@ -1124,7 +1128,7 @@ not used
 → all runtimes [here](https://github.com/ADB-Team/railway-db-public/blob/main/doc/runtimes_cstore.md)
 
 #### Explanation
-
+The average is lower because of of the cost the cost of the search in join group is lower than the join originaly.
 
 ### Backup Transaction 5
 
@@ -1153,7 +1157,7 @@ not used
 #### Query plans
 
 - [old query plan](https://github.com/ADB-Team/railway-db-public/blob/main/query-plans/original/transaction1.md)
-- [new query plan]()
+- [new query plan](https://github.com/ADB-Team/railway-db-public/blob/main/query-plans/original/transaction1.md)
 
 #### Performance
 
@@ -1170,7 +1174,7 @@ not used
 #### Query plans
 
 - [old query plan](https://github.com/ADB-Team/railway-db-public/blob/main/query-plans/original/transaction3.md)
-- [new query plan]()
+- [new query plan](https://github.com/ADB-Team/railway-db-public/blob/main/query-plans/original/transaction3.md)
 
 #### Performance
 
@@ -1188,7 +1192,7 @@ not used
 #### Query plans
 
 - [old query plan](https://github.com/ADB-Team/railway-db-public/blob/main/query-plans/original/transaction5.md)
-- [new query plan]()
+- [new query plan](https://github.com/ADB-Team/railway-db-public/blob/main/query-plans/original/transaction5.md)
 
 #### Performance
 
@@ -1206,7 +1210,7 @@ not used
 #### Query plans
 
 - [old query plan](https://github.com/ADB-Team/railway-db-public/blob/main/query-plans/original/transaction7.md)
-- [new query plan]()
+- [new query plan](https://github.com/ADB-Team/railway-db-public/blob/main/query-plans/columnar-stores/zedstore/jb2t7.md)
 
 #### Performance
 
@@ -1217,7 +1221,7 @@ not used
 → all runtimes [here](https://github.com/ADB-Team/railway-db-public/blob/main/doc/runtimes_cstore.md)
 
 #### Explanation
-
+The cost of query plan is a little less than the original one (for update and delete).
 
 ### Backup Transaction 2
 
@@ -1260,7 +1264,7 @@ not used
 #### Query plans
 
 - [old query plan](https://github.com/ADB-Team/railway-db-public/blob/main/query-plans/original/backup-transaction5.md)
-- [new query plan]()
+- [new query plan](https://github.com/ADB-Team/railway-db-public/blob/main/query-plans/columnar-stores/zedstore/jg2bt5.md)
 
 #### Performance
 
@@ -1271,4 +1275,5 @@ not used
 → all runtimes [here](https://github.com/ADB-Team/railway-db-public/blob/main/doc/runtimes_cstore.md)
 
 #### Explanation
+The cost of query plan is a little less than the original one.
 
