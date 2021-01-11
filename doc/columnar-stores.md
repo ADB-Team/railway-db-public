@@ -1,3 +1,22 @@
+Table of Contents
+=================
+
+   * [Zedstore](#zedstore)
+      * [General conclusions](#general-conclusions)
+      * [Columnar Store 1](#columnar-store-1)
+      * [Columnar Store 2](#columnar-store-2)
+      * [Columnar Store 3](#columnar-store-3)
+      * [Join Group 1](#join-group-1)
+      * [Join Group 2](#join-group-2)
+  * [Cstore](#cstore)
+      * [General conclusions](#general-conclusions-1)
+      * [Columnar Store 1](#columnar-store-1-1)
+      * [Columnar Store 2](#columnar-store-2-1)
+      * [Columnar Store 3](#columnar-store-3-1)
+      * [Join Group 1](#join-group-1-1)
+      * [Join Group 2](#join-group-2-1)
+
+
 # Zedstore
 
 ## General conclusions
