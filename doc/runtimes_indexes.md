@@ -1,4 +1,4 @@
-| Transaction          | min   | max   | avg   | diff |
+| Transaction          | min   | max   | avg   | diff(avg) |
 |----------------------|-------|-------|-------|------|
 | ***Without indexes***      |       |       |       |      |
 | Transaction 1        | 0.472 | 0.638 | 0.583 |      |
