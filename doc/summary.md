@@ -49,7 +49,7 @@ What is interesting to see is that this transaction also inserts into `routes` b
 |-------------------------------------|----|----------|---------|--------|------|
 | Without optimisation                | 10 | 4.3591 s | 4.14 s | 4.953 s | --   |
 | Best: [Hash indexes](https://github.com/ADB-Team/railway-db-public/blob/main/specs/indexes.md)                |    |          |         |        |      |
-| 2nd best: [Columnar Store 3](https://github.com/ADB-Team/railway-db-public/blob/main/specs/columnar-store.md#columnar-store-3) zedstore |    |          |         |        |      |
+| 2nd best: [Join Group 2](https://github.com/ADB-Team/railway-db-public/blob/main/specs/columnar-store.md#join-group-2) cstore |    |          |         |        |      |
 
 ### Analysis
 
