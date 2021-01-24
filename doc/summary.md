@@ -59,10 +59,14 @@ What is interesting to see is that this transaction also inserts into `routes` b
 | Database version                   | n  | avg      | min     | max    | diff |
 |-------------------------------------|----|----------|---------|--------|------|
 | Without optimisation                | 10 | 1.9664 s | 1.948 s | 2.012 	 s | --   |
-| Best: [Partition 4](https://github.com/ADB-Team/railway-db-public/blob/main/specs/partitions.md#partition-4)                |    |          |         |        |      |
+| Best: [Partition 4](https://github.com/ADB-Team/railway-db-public/blob/main/specs/partitions.md#partition-4)                | 10 | 0.1755 s | 0.172 s | 0.185 s | -1.7909 s |
 | 2nd best: [Join Group 2](https://github.com/ADB-Team/railway-db-public/blob/main/specs/columnar-store.md#join-group-2) cstore |    |          |         |        |      |
 
 ### Analysis
+
+#### Best optimisation
+
+Transaction 7 deletes connections from `schedule` and `passengers_schedule`. By partitioning the `schedule` table, those bulk deletions become much faster. As one can see in the [query plan](https://github.com/ADB-Team/railway-db-public/blob/main/query-plans/partitions/partition4/transaction7.md), the deletions are made by accessing each partition of `schedule` separately with a sequential scan.
 
 ## Backup Transaction 2
 ### Runtimes
