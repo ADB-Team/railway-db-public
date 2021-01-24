@@ -1,5 +1,7 @@
 # Summary
 
+Documentation of the implementation of [the summary specification](https://github.com/ADB-Team/railway-db-public/blob/main/specs/summary.md).
+
 ## Transaction 1
 ### Runtimes
 
