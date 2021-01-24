@@ -7,7 +7,7 @@
 |-------------------------------------|----|----------|---------|--------|------|
 | Without optimisation                | 10 | 0.5306 s | 0.411 s | 0.56 s | --   |
 | Best: [B-tree indexes](https://github.com/ADB-Team/railway-db-public/blob/main/specs/indexes.md)                | 10 | 0.535 s | 0.396 s | 0.64 s | + 0.0044 s |
-| 2nd best: [Columnar Store 3](https://github.com/ADB-Team/railway-db-public/blob/main/specs/columnar-store.md#columnar-store-3) zedstore |    |          |         |        |      |
+| 2nd best: [Columnar Store 3](https://github.com/ADB-Team/railway-db-public/blob/main/specs/columnar-store.md#columnar-store-3) zedstore | 10 | 0.4045 s | 0.395 s | 0.429 s | -0.1261 s |
 
 ### Analysis
 
@@ -15,9 +15,13 @@
 
 The running time is actually microscopically bigger than without optimisation. The problem with optimising this query is that it already is quite fast, thus improvements don't show much of an impact.
 
-If we take a look at the [query plan](https://github.com/ADB-Team/railway-db-public/blob/main/query-plans/with-indexes/transaction1_btree.md), we can see that one of the created Btree indexes actually is used. However, it is only used for a single scan that was already very fast to begin with.
+If we take a look at the [query plan](https://github.com/ADB-Team/railway-db-public/blob/main/query-plans/with-indexes/transaction1_btree.md), we can see that 2 of the created Btree indexes actually are used. However, it is only used for a single scan that was already very fast to begin with.
 
 #### 2nd best optimisation
+
+Despite our historical data suggesting that the Columnar Store 3 with zedstore is the 2nd best optimisation, the newest runtime tests suggest that it actually is the best optimisation regarding transaction 1.
+
+A look into the [query plan](https://github.com/ADB-Team/railway-db-public/blob/main/query-plans/columnar-stores/zedstore/cs3/transaction1.md) shows us that the same part of the query as with the 1st optimisation is being improved, the getting of the connection. Accessing the station names from a columnar store apparently has a bigger performance impact than a btree index on `stations.name` and `schedule.start_time`.
 
 ## Transaction 3
 ### Runtimes
