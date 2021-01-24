@@ -6,10 +6,18 @@
 | Database version                   | n  | avg      | min     | max    | diff |
 |-------------------------------------|----|----------|---------|--------|------|
 | Without optimisation                | 10 | 0.5306 s | 0.411 s | 0.56 s | --   |
-| Best: [B-tree indexes](https://github.com/ADB-Team/railway-db-public/blob/main/specs/indexes.md)                |    |          |         |        |      |
+| Best: [B-tree indexes](https://github.com/ADB-Team/railway-db-public/blob/main/specs/indexes.md)                | 10 | 0.535 s | 0.396 s | 0.64 s | + 0.0044 s |
 | 2nd best: [Columnar Store 3](https://github.com/ADB-Team/railway-db-public/blob/main/specs/columnar-store.md#columnar-store-3) zedstore |    |          |         |        |      |
 
 ### Analysis
+
+#### Best optimisation
+
+The running time is actually microscopically bigger than without optimisation. The problem with optimising this query is that it already is quite fast, thus improvements don't show much of an impact.
+
+If we take a look at the [query plan](https://github.com/ADB-Team/railway-db-public/blob/main/query-plans/with-indexes/transaction1_btree.md), we can see that one of the created Btree indexes actually is used. However, it is only used for a single scan that was already very fast to begin with.
+
+#### 2nd best optimisation
 
 ## Transaction 3
 ### Runtimes
