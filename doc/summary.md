@@ -113,6 +113,12 @@ The nice performance improvement might just be a hardware improvement after all.
 |-------------------------------------|----|----------|---------|--------|------|
 | Without optimisation                | 10 | 4.0755 s | 3.786 s | 4.238 	 s | --   |
 | Best: [Join Group 2](https://github.com/ADB-Team/railway-db-public/blob/main/specs/columnar-store.md#join-group-2) cstore                |    |          |         |        |      |
-| 2nd best: [Partition 1](https://github.com/ADB-Team/railway-db-public/blob/main/specs/partitions.md#partition-1) |    |          |         |        |      |
+| 2nd best: [Partition 1](https://github.com/ADB-Team/railway-db-public/blob/main/specs/partitions.md#partition-1) | 10 | 0.149375 s | 0.136 s | 0.156 s | - 3.926125 s |
 
 ### Analysis
+
+#### Best optimisation
+
+#### 2nd best optimisation
+
+This transaction makes great use of partition 1, which partitions cities by country. As you can see in the [query plan], it scans all the partitions in parallel, saving a lot of time.
