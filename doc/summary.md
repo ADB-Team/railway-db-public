@@ -44,6 +44,8 @@ For each of the connections that are created, a sequential scan is done on `rout
 
 What is interesting to see is that this transaction also inserts into `routes` but not into the new columnar store but into the old row store that was renamed to `routes_rs`. This could also be a contributing factor to the performance as it is generally less efficient to insert into columnar stores than into row stores.
 
+#### 2nd best optimisation
+
 ## Transaction 5
 ### Runtimes
 
@@ -70,6 +72,8 @@ What is interesting to see is that this transaction also inserts into `routes` b
 
 Transaction 7 deletes connections from `schedule` and `passengers_schedule`. By partitioning the `schedule` table, those bulk deletions become much faster. As one can see in the [query plan](https://github.com/ADB-Team/railway-db-public/blob/main/query-plans/partitions/partition4/transaction7.md), the deletions are made by accessing each partition of `schedule` separately with a sequential scan.
 
+#### 2nd best optimisation
+
 ## Backup Transaction 2
 ### Runtimes
 
@@ -88,9 +92,19 @@ Transaction 7 deletes connections from `schedule` and `passengers_schedule`. By 
 |-------------------------------------|----|----------|---------|--------|------|
 | Without optimisation                | 10 | 1.5775 s | 1.501 s | 1.867 s | --   |
 | Best: [Join Group 1](https://github.com/ADB-Team/railway-db-public/blob/main/specs/columnar-store.md#join-group-1) cstore                |    |          |         |        |      |
-| 2nd best: [Hash indexes](https://github.com/ADB-Team/railway-db-public/blob/main/specs/indexes.md)  |    |          |         |        |      |
+| 2nd best: [Hash indexes](https://github.com/ADB-Team/railway-db-public/blob/main/specs/indexes.md)  | 10 | 1.2375 s | 1.065 s | 1.17 s | - 0.4537 s |
 
 ### Analysis
+
+#### Best optimisation
+
+#### 2nd best optimisation
+
+Backup transaction 4 actually makes no use of the created indexes, see [query plan](https://github.com/ADB-Team/railway-db-public/blob/main/query-plans/with-indexes/backup-transaction4_hash.md). So why is there still the 2nd best performance improvement with hash indexes?
+
+It might just be that that there was just a performance improvement when run on Ismael Pérez's computer. A re-run without indexes resulted in similar running times as the ones with hash indexes for backup transaction 4.
+
+The nice performance improvement might just be a hardware improvement after all.
 
 ## Backup Transaction 5
 ### Runtimes
