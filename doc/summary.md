@@ -29,10 +29,18 @@ A look into the [query plan](https://github.com/ADB-Team/railway-db-public/blob/
 | Database version                   | n  | avg      | min     | max    | diff |
 |-------------------------------------|----|----------|---------|--------|------|
 | Without optimisation                | 10 | 3.2264 s | 3.047 s | 3.727 s | --   |
-| Best: [Columnar Store 1](https://github.com/ADB-Team/railway-db-public/blob/main/specs/columnar-store.md#columnar-store-1) zedstore                |    |          |         |        |      |
+| Best: [Columnar Store 1](https://github.com/ADB-Team/railway-db-public/blob/main/specs/columnar-store.md#columnar-store-1) zedstore                | 10 | 2.47 s | 2.381 s | 2.569 s | - 0.75615 s |
 | 2nd best: [Join Group 2](https://github.com/ADB-Team/railway-db-public/blob/main/specs/columnar-store.md#join-group-2) cstore |    |          |         |        |      |
 
 ### Analysis
+
+#### Best optimisation
+
+As one can see in the [query plan](https://github.com/ADB-Team/railway-db-public/blob/main/query-plans/columnar-stores/zedstore/cs1/transaction3.md), transaction 3 heavily makes use of columnar store number 3, which is `routes`.
+
+For each of the connections that are created, a sequential scan is done on `routes`. Accessing data is where the new columnar store is more performant than a regular row store. 
+
+What is interesting to see is that this transaction also inserts into `routes` but not into the new columnar store but into the old row store that was renamed to `routes_rs`. This could also be a contributing factor to the performance as it is generally less efficient to insert into columnar stores than into row stores.
 
 ## Transaction 5
 ### Runtimes
