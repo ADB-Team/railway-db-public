@@ -44,7 +44,7 @@ A look into the [query plan](https://github.com/ADB-Team/railway-db-public/blob/
 |-------------------------------------|----|----------|---------|--------|------|
 | Without optimisation                | 10 | 3.2264 s | 3.047 s | 3.727 s | --   |
 | Best: [Columnar Store 1](https://github.com/ADB-Team/railway-db-public/blob/main/specs/columnar-store.md#columnar-store-1) zedstore                | 10 | 2.47 s | 2.381 s | 2.569 s | - 0.75615 s |
-| 2nd best: [Join Group 2](https://github.com/ADB-Team/railway-db-public/blob/main/specs/columnar-store.md#join-group-2) cstore |    |          |         |        |      |
+| 2nd best: [Join Group 2](https://github.com/ADB-Team/railway-db-public/blob/main/specs/columnar-store.md#join-group-2) cstore | 10   |  2.56   |  2.03|3.14|-0.557525  |
 
 ## Analysis
 
@@ -65,7 +65,7 @@ What is interesting to see is that this transaction also inserts into `routes` b
 |-------------------------------------|----|----------|---------|--------|------|
 | Without optimisation                | 10 | 4.3591 s | 4.14 s | 4.953 s | --   |
 | Best: [Hash indexes](https://github.com/ADB-Team/railway-db-public/blob/main/specs/indexes.md)                |    |          |         |        |      |
-| 2nd best: [Join Group 2](https://github.com/ADB-Team/railway-db-public/blob/main/specs/columnar-store.md#join-group-2) cstore |    |          |         |        |      |
+| 2nd best: [Join Group 2](https://github.com/ADB-Team/railway-db-public/blob/main/specs/columnar-store.md#join-group-2) cstore |  10  | 11.71 | 11.61|11.94|-0.10        |
 
 ## Analysis
 
@@ -80,7 +80,7 @@ What is interesting to see is that this transaction also inserts into `routes` b
 |-------------------------------------|----|----------|---------|--------|------|
 | Without optimisation                | 10 | 1.9664 s | 1.948 s | 2.012 	 s | --   |
 | Best: [Partition 4](https://github.com/ADB-Team/railway-db-public/blob/main/specs/partitions.md#partition-4)                | 10 | 0.1755 s | 0.172 s | 0.185 s | -1.7909 s |
-| 2nd best: [Join Group 2](https://github.com/ADB-Team/railway-db-public/blob/main/specs/columnar-store.md#join-group-2) cstore |    |          |         |        |      |
+| 2nd best: [Join Group 2](https://github.com/ADB-Team/railway-db-public/blob/main/specs/columnar-store.md#join-group-2) cstore | 10 | 7.40|7.21|7.64|-0.58|         
 
 ## Analysis
 
@@ -97,7 +97,7 @@ Transaction 7 deletes connections from `schedule` and `passengers_schedule`. By 
 |-------------------------------------|----|----------|---------|--------|------|
 | Without optimisation                | 10 | 1.0949 s | 1.06 s | 1.155 s | --   |
 | Best: [Join Group 2](https://github.com/ADB-Team/railway-db-public/blob/main/specs/columnar-store.md#join-group-2) cstore                |    |          |         |        |      |
-| 2nd best: [Join Group 1](https://github.com/ADB-Team/railway-db-public/blob/main/specs/columnar-store.md#join-group-1) cstore |    |          |         |        |      |
+| 2nd best: [Join Group 1](https://github.com/ADB-Team/railway-db-public/blob/main/specs/columnar-store.md#join-group-1) cstore | 10   |  2.17|2.13|2.22|-0.25|
 
 ## Analysis
 
@@ -111,7 +111,7 @@ Transaction 7 deletes connections from `schedule` and `passengers_schedule`. By 
 | Database version                   | n  | avg      | min     | max    | diff |
 |-------------------------------------|----|----------|---------|--------|------|
 | Without optimisation                | 10 | 1.5775 s | 1.501 s | 1.867 s | --   |
-| Best: [Join Group 1](https://github.com/ADB-Team/railway-db-public/blob/main/specs/columnar-store.md#join-group-1) cstore                |    |          |         |        |      |
+| Best: [Join Group 1](https://github.com/ADB-Team/railway-db-public/blob/main/specs/columnar-store.md#join-group-1) cstore                | 10 | 3.84|3.77|3.94|-0.48         | 
 | 2nd best: [Hash indexes](https://github.com/ADB-Team/railway-db-public/blob/main/specs/indexes.md)  | 10 | 1.2375 s | 1.065 s | 1.17 s | - 0.4537 s |
 
 ## Analysis
@@ -132,7 +132,7 @@ The nice performance improvement might just be a hardware improvement after all.
 | Database version                   | n  | avg      | min     | max    | diff |
 |-------------------------------------|----|----------|---------|--------|------|
 | Without optimisation                | 10 | 4.0755 s | 3.786 s | 4.238 	 s | --   |
-| Best: [Join Group 2](https://github.com/ADB-Team/railway-db-public/blob/main/specs/columnar-store.md#join-group-2) cstore                |    |          |         |        |      |
+| Best: [Join Group 2](https://github.com/ADB-Team/railway-db-public/blob/main/specs/columnar-store.md#join-group-2) cstore                | 10   |9.52|9.01|11.22|2.92          |   
 | 2nd best: [Partition 1](https://github.com/ADB-Team/railway-db-public/blob/main/specs/partitions.md#partition-1) | 10 | 0.149375 s | 0.136 s | 0.156 s | - 3.926125 s |
 
 ## Analysis
