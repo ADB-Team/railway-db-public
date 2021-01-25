@@ -44,7 +44,7 @@ Document to analyze the best improvements to apply on each transaction.
 [Old Query Plan](https://github.com/ADB-Team/railway-db-public/blob/main/query-plans/original/transaction3.md)
 
 - Best improvement: [Zedstore Columnar Store 1](https://github.com/ADB-Team/railway-db-public/blob/main/specs/columnar-store.md#columnar-store-1) - [Query plan](https://github.com/ADB-Team/railway-db-public/blob/main/query-plans/columnar-stores/zedstore/cs1/transaction3.md)
-- Second best improvement: [Cstore Join Group 2](https://github.com/ADB-Team/railway-db-public/blob/main/specs/columnar-store.md#join-group-2) - [Query plan]()
+- Second best improvement: [Cstore Join Group 1](https://github.com/ADB-Team/railway-db-public/blob/main/specs/columnar-store.md#join-group-1) - [Query plan](https://github.com/ADB-Team/railway-db-public/blob/main/query-plans/columnar-stores/cstore/jg1/transaction3.md)
 
 ### Transaction 5
 

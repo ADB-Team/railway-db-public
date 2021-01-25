@@ -44,7 +44,7 @@ A look into the [query plan](https://github.com/ADB-Team/railway-db-public/blob/
 |-------------------------------------|----|----------|---------|--------|------|
 | Without optimisation                | 10 | 3.2264 s | 3.047 s | 3.727 s | --   |
 | Best: [Columnar Store 1](https://github.com/ADB-Team/railway-db-public/blob/main/specs/columnar-store.md#columnar-store-1) zedstore                | 10 | 2.47 s | 2.381 s | 2.569 s | - 0.75615 s |
-| 2nd best: [Join Group 2](https://github.com/ADB-Team/railway-db-public/blob/main/specs/columnar-store.md#join-group-2) cstore | 10   |  2.56   |  2.03|3.14|-0.557525  |
+| 2nd best: [Join Group 1](https://github.com/ADB-Team/railway-db-public/blob/main/specs/columnar-store.md#join-group-1) cstore |  10  |    0,9105 s      |   0,849 s     |    1,12 s   |  -2,3159 s    |
 
 ## Analysis
 
@@ -57,6 +57,10 @@ For each of the connections that are created, a sequential scan is done on `rout
 What is interesting to see is that this transaction also inserts into `routes` but not into the new columnar store but into the old row store that was renamed to `routes_rs`. This could also be a contributing factor to the performance as it is generally less efficient to insert into columnar stores than into row stores.
 
 ### 2nd best optimisation
+
+We can see the [query plan](https://github.com/ADB-Team/railway-db-public/blob/main/query-plans/columnar-stores/cstore/jg1/transaction3.md) with the new costs and times within the explain analyze query plan.
+
+The new table is not used directly in the transaction but the implementation provides a better average time.
 
 # Transaction 5
 ## Runtimes
