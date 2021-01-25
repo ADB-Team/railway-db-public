@@ -78,7 +78,7 @@ The new table `seats_wagons_trains_jg` is not used directly in the transaction b
 
 ### 2nd best optimisation
 
-We can see the [query plan](https://github.com/ADB-Team/railway-db-public/blob/main/query-plans/columnar-stores/cstore/jg1/transaction3.md).
+We can see the [query plan](https://github.com/ADB-Team/railway-db-public/blob/main/query-plans/with-indexes/transaction5_hash.md).
 
 # Transaction 7
 ## Runtimes
