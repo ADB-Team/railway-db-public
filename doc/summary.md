@@ -148,7 +148,7 @@ The nice performance improvement might just be a hardware improvement after all.
 ## Analysis
 
 ### Best optimisation
-
+We can see the [query plan](https://github.com/ADB-Team/railway-db-public/blob/main/query-plans/columnar-stores/zedstore/jg2bt5.md)
 ### 2nd best optimisation
 
 This transaction makes great use of partition 1, which partitions cities by country. As you can see in the [query plan], it scans all the partitions in parallel, saving a lot of time.
