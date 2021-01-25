@@ -75,7 +75,7 @@ The new table `seats_wagons_trains_jg` is not used directly in the transaction b
 ## Analysis
 
 ### Best optimisation
-We can see the [query plan](https://github.com/ADB-Team/railway-db-public/blob/main/query-plans/with-indexes/transaction5_hash.md).
+We can see the [query plan](https://github.com/ADB-Team/railway-db-public/blob/main/query-plans/with-indexes/transaction5_hash.md) where the index `index_stations_name` is used in a index scan of `stations` table. 
 ### 2nd best optimisation
 As we can see in the We can see the [query plan](https://github.com/ADB-Team/railway-db-public/blob/main/query-plans/cstore/jg2/transaction5.md), the new table is not used and we can't ensure that the improvement is due to our join table `cities_countries_jg`.
 
@@ -126,7 +126,9 @@ Impossible to have the query plan because of module Cstore see [here](https://gi
 ## Analysis
 
 ### Best optimisation
- We can see the [query plan](/ADB-Team/railway-db-public/blob/main/query-plans/columnar-stores/zedstore/jg1bt4.md ).https://github.com/ADB-Team/railway-db-public/blob/main/query-plans/columnar-stores/zedstore/jg1bt4.md
+ We can see the [query plan](/ADB-Team/railway-db-public/blob/main/query-plans/columnar-stores/zedstore/jg1bt4.md) where we have details of the use of the table `seats_wagons_trains_jg` like the size of the file created by cstore.
+
+ The use of the scan in the join table give us a better performance to loop over all rows with the seats and wagons information.
 ### 2nd best optimisation
 
 Backup transaction 4 actually makes no use of the created indexes, see [query plan](https://github.com/ADB-Team/railway-db-public/blob/main/query-plans/with-indexes/backup-transaction4_hash.md). So why is there still the 2nd best performance improvement with hash indexes?
@@ -148,7 +150,9 @@ The nice performance improvement might just be a hardware improvement after all.
 ## Analysis
 
 ### Best optimisation
-We can see the [query plan](https://github.com/ADB-Team/railway-db-public/blob/main/query-plans/columnar-stores/zedstore/jg2bt5.md)
+We can see the [query plan](https://github.com/ADB-Team/railway-db-public/blob/main/query-plans/columnar-stores/zedstore/jg2bt5.md) where we have details of the use of the table `cities_countries_jg` like the size of the file created by cstore and where it's used.
+
+The direct access to countries give us a better performance intead of searching again in cities table.
 ### 2nd best optimisation
 
 This transaction makes great use of partition 1, which partitions cities by country. As you can see in the [query plan], it scans all the partitions in parallel, saving a lot of time.
