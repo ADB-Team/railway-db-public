@@ -77,8 +77,10 @@ The new table `seats_wagons_trains_jg` is not used directly in the transaction b
 ### Best optimisation
 We can see the [query plan](https://github.com/ADB-Team/railway-db-public/blob/main/query-plans/with-indexes/transaction5_hash.md).
 ### 2nd best optimisation
+As we can see in the We can see the [query plan](https://github.com/ADB-Team/railway-db-public/blob/main/query-plans/cstore/jg2/transaction5.md), the new table is not used and we can't ensure that the improvement is due to our join table `cities_countries_jg`.
 
 # Transaction 7
+
 ## Runtimes
 
 | Database version                   | n  | avg      | min     | max    | diff |
