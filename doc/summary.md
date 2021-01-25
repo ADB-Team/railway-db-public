@@ -111,7 +111,7 @@ Transaction 7 use a join of `countries` and `cities`. Joining that tables in a s
 ## Analysis
 
 ### Best opimisation
-Impossible to have the query plan because of module Cstore see [here](https://github.com/ADB-Team/railway-db-public/blob/main/doc/columnar-stores.md#general-conclusions-1) for explanations, first.And second th.e transactions dont join group because we have result
+Impossible to have the query plan because of module Cstore see [here](https://github.com/ADB-Team/railway-db-public/blob/main/doc/columnar-stores.md#general-conclusions-1) for explanations, first.And second,  the transactions don't use join group strore because we have result.
 
 # Backup Transaction 4
 ## Runtimes
