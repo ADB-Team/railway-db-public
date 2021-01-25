@@ -92,7 +92,7 @@ Transaction 7 deletes connections from `schedule` and `passengers_schedule`. By 
 
 ### 2nd best optimisation
 
-Transaction 7 use a join of `countries` and `cities`. Joining that tables in a single table become much faster. As one can see in the [query plan](https://github.com/ADB-Team/railway-db-public/blob/main/query-plans/sctore/jg2/transaction7.md), the table `cities_countries_jg` is used in scans.
+Transaction 7 use a join of `countries` and `cities`. Joining that tables in a single table should become much faster. As one can see in the [query plan](https://github.com/ADB-Team/railway-db-public/blob/main/query-plans/sctore/jg2/transaction7.md), the table `cities_countries_jg` is used in scans, but the time is so much worst than before.
 
 # Backup Transaction 2
 ## Runtimes
