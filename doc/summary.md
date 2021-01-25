@@ -84,7 +84,7 @@ The new table is not used directly in the transaction but the implementation pro
 |-------------------------------------|----|----------|---------|--------|------|
 | Without optimisation                | 10 | 1.9664 s | 1.948 s | 2.012 	 s | --   |
 | Best: [Partition 4](https://github.com/ADB-Team/railway-db-public/blob/main/specs/partitions.md#partition-4)                | 10 | 0.1755 s | 0.172 s | 0.185 s | -1.7909 s |
-| 2nd best: [Join Group 2](https://github.com/ADB-Team/railway-db-public/blob/main/specs/columnar-store.md#join-group-2) cstore | 10 | 7.40|7.21|7.64|-0.58|         
+| 2nd best: [Join Group 2](https://github.com/ADB-Team/railway-db-public/blob/main/specs/columnar-store.md#join-group-2) cstore | 10 | 4,2814 s |4,137 s|4,512 s| 2,315 s |         
 
 ## Analysis
 
