@@ -1,6 +1,6 @@
 # Summary
 
-Documentation of the implementation of [the summary specification](https://github.com/ADB-Team/railway-db-public/blob/main/specs/summary.md).
+Documentation of the implementation of [the summary specification](https://github.com/ADB-Team/railway-db-public/blob/main/specs/summary-with-original-times.md).
 
 Table of Contents
 =================
