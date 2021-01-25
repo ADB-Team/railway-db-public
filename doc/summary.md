@@ -6,26 +6,12 @@ Table of Contents
 =================
 
    * [Transaction 1](#transaction-1)
-      * [Runtimes](#runtimes)
-      * [Analysis](#analysis)
    * [Transaction 3](#transaction-3)
-      * [Runtimes](#runtimes-1)
-      * [Analysis](#analysis-1)
    * [Transaction 5](#transaction-5)
-      * [Runtimes](#runtimes-2)
-      * [Analysis](#analysis-2)
    * [Transaction 7](#transaction-7)
-      * [Runtimes](#runtimes-3)
-      * [Analysis](#analysis-3)
    * [Backup Transaction 2](#backup-transaction-2)
-      * [Runtimes](#runtimes-4)
-      * [Analysis](#analysis-4)
    * [Backup Transaction 4](#backup-transaction-4)
-      * [Runtimes](#runtimes-5)
-      * [Analysis](#analysis-5)
    * [Backup Transaction 5](#backup-transaction-5)
-      * [Runtimes](#runtimes-6)
-      * [Analysis](#analysis-6)
    * [Final conclusions](#final-conclusions)
 
 # Transaction 1
