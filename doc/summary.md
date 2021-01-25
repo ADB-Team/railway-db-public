@@ -122,3 +122,7 @@ The nice performance improvement might just be a hardware improvement after all.
 #### 2nd best optimisation
 
 This transaction makes great use of partition 1, which partitions cities by country. As you can see in the [query plan], it scans all the partitions in parallel, saving a lot of time.
+
+# Final conclusions
+
+Which of the above improvements would be suitable to permanently apply to our database system?
