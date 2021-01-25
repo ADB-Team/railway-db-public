@@ -126,7 +126,7 @@ Impossible to have the query plan because of module Cstrose see [here](https://g
 ## Analysis
 
 ### Best optimisation
-
+ We can see the [query plan](/ADB-Team/railway-db-public/blob/main/query-plans/columnar-stores/zedstore/jg1bt4.md ).https://github.com/ADB-Team/railway-db-public/blob/main/query-plans/columnar-stores/zedstore/jg1bt4.md
 ### 2nd best optimisation
 
 Backup transaction 4 actually makes no use of the created indexes, see [query plan](https://github.com/ADB-Team/railway-db-public/blob/main/query-plans/with-indexes/backup-transaction4_hash.md). So why is there still the 2nd best performance improvement with hash indexes?
