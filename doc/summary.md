@@ -82,7 +82,8 @@ What is interesting to see is that this transaction also inserts into `routes` b
 |-------------------------------------|----|----------|---------|--------|------|
 | Without optimisation                | 10 | 1.9664 s | 1.948 s | 2.012 	 s | --   |
 | Best: [Partition 4](https://github.com/ADB-Team/railway-db-public/blob/main/specs/partitions.md#partition-4)                | 10 | 0.1755 s | 0.172 s | 0.185 s | -1.7909 s |
-| 2nd best: [Join Group 2](https://github.com/ADB-Team/railway-db-public/blob/main/specs/columnar-store.md#join-group-2) cstore | 10 | 4,2814 s |4,137 s|4,512 s| 2,315 s |         
+| Without optimisation                | 10 | 4,4828 s | 4,153 s | 5,046 	 s | --   |
+| 2nd best: [Join Group 2](https://github.com/ADB-Team/railway-db-public/blob/main/specs/columnar-store.md#join-group-2) cstore | 10 | 4,2814 s |4,137 s|4,512 s| -0,2014 s |         
 
 ## Analysis
 
@@ -92,7 +93,7 @@ Transaction 7 deletes connections from `schedule` and `passengers_schedule`. By 
 
 ### 2nd best optimisation
 
-Transaction 7 use a join of `countries` and `cities`. Joining that tables in a single table should become much faster. As one can see in the [query plan](https://github.com/ADB-Team/railway-db-public/blob/main/query-plans/sctore/jg2/transaction7.md), the table `cities_countries_jg` is used in scans, but the time is so much worst than before.
+Transaction 7 use a join of `countries` and `cities`. Joining that tables in a single table become faster. As one can see in the [query plan](https://github.com/ADB-Team/railway-db-public/blob/main/query-plans/sctore/jg2/transaction7.md), the table `cities_countries_jg` is used in scans.
 
 # Backup Transaction 2
 ## Runtimes
