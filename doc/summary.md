@@ -68,9 +68,8 @@ The new table `seats_wagons_trains_jg` is not used directly in the transaction b
 
 | Database version                   | n  | avg      | min     | max    | diff |
 |-------------------------------------|----|----------|---------|--------|------|
-| Without optimisation                | 10 | 4.3591 s | 4.14 s | 4.953 s | --   |
-| Best: [Hash indexes](https://github.com/ADB-Team/railway-db-public/blob/main/specs/indexes.md)                |    |          |         |        |      |
 | Without optimisation                | 10 | 11.81|11.17|12.69|--|
+| Best: [Hash indexes](https://github.com/ADB-Team/railway-db-public/blob/main/specs/indexes.md)                | 10   |   10.15|8.79|11.21|-1.66|
 | 2nd best: [Join Group 2](https://github.com/ADB-Team/railway-db-public/blob/main/specs/columnar-store.md#join-group-2) cstore |  10  | 11.71 | 11.61|11.94|-0.10        |
 
 ## Analysis
