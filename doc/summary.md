@@ -146,3 +146,11 @@ This transaction makes great use of partition 1, which partitions cities by coun
 # Final conclusions
 
 Which of the above improvements would be suitable to permanently apply to our database system?
+
+The optimisation that affects almost all of the transactions in a positive way is [Join Group 2](https://github.com/ADB-Team/railway-db-public/blob/main/specs/columnar-store.md#join-group-2) implemented with cstore. A look at the [runtimes](https://github.com/ADB-Team/railway-db-public/blob/main/doc/runtimes_cstore.md) shows that except for transaction 1, which has a miniscule performance decrease of only 0.047 seconds, all transactions have performance improvements, some are even the highest improvements and therefore mentioned in the analysis above.
+
+[Join Group 1](https://github.com/ADB-Team/railway-db-public/blob/main/specs/columnar-store.md#join-group-1) implemented with cstore is also a hot candidate for applying permanently, however it would mean a significant performance loss for transaction 5 (see [here](https://github.com/ADB-Team/railway-db-public/blob/main/doc/runtimes_cstore.md) for the runtimes).
+
+Another performance improvement that could be applied without harming other transactions that cannot make use of it, would be [B-tree indexes](https://github.com/ADB-Team/railway-db-public/blob/main/specs/indexes.md)). As previously discussed, backup transaction 4 would neither profit nor lose performance and only two transactions are affected in a slightly negative way performance-wise, as the [running times table for the indexes](https://github.com/ADB-Team/railway-db-public/blob/main/doc/runtimes_indexes.md) shows.
+
+When it comes to the other options to improve performance that were tried out, columnar stores and partitions, there are always winners and losers for each of the modifications. This means it could potentially harm overall performance more than it would improve the transactions.
